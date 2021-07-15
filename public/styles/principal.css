@@ -1,0 +1,152 @@
+:root {
+  --verde: #336633;
+  --azul: #066ac7;
+  --branco: #fff;
+  --cabin: "Cabin", sans-serif; /* 400 e 500 */
+  --inter: "Inter", sans-serif; /* 400 e 600 */
+  --raj: "Rajdhani", sans-serif; /* 400 e 600 */
+}
+html,
+body {
+  overflow-x: hidden;
+  overflow-y: hidden;
+  background: url("/images/fundoDesktop.png") no-repeat rgb(22, 79, 24);
+}
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.header {
+  height: 16vh;
+  width: 100%;
+  background-color: #fefefe;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.logo-header {
+  width: 80%;
+}
+
+/* DIV DOS BOTOES NO HEADER */
+.group-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  width: 30%;
+  margin-left: -5rem;
+}
+
+/* BOTOES NO HEADER */
+.button-header {
+  border: none;
+  border-radius: 2px;
+  padding: 0.6rem;
+  height: 3rem;
+  width: 20rem;
+  cursor: pointer;
+  color: var(--branco);
+  font-family: var(--cabin);
+  font-size: 1rem;
+  transition: filter 0.5s;
+}
+header .button-header:nth-of-type(1) {
+  background-color: var(--azul);
+}
+header .button-header:nth-of-type(2) {
+  background-color: var(--verde);
+}
+.button-header:hover {
+  filter: brightness(0.9);
+}
+.zap-icon {
+  width: 4rem;
+}
+
+/* CONTATO WHATSAPP NO HEADER */
+.zap-contact {
+  margin-right: 3rem;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  cursor: pointer;
+}
+/* DIV COM O TEXTO DO ZAP */
+.zap-contact div {
+  display: flex;
+  flex-direction: column;
+  font-family: var(--raj);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--verde);
+}
+
+/* IMAGEM DO BANNER NA LANDING PAGE */
+.banner {
+  margin-top: 0;
+  position: absolute;
+  height: 86vh;
+  width: 100vw;
+}
+
+/* CONTAINER COM H1 E SPAN */
+
+.container-h1 {
+  position: relative;
+  height: 100%;
+  width: 22vw;
+  margin-left: 4rem;
+  padding-top: 4rem;
+}
+.container-span {
+  position: relative;
+  margin-left: 4rem;
+  padding-top: 4rem;
+}
+.container-span span {
+  color: var(--branco);
+  font-family: var(--inter);
+  word-spacing: 3px;
+  margin-bottom: 0;
+  font-size: 1rem;
+  line-height: 20px;
+}
+.container-h1 h1 {
+  color: var(--branco);
+  font-family: var(--inter);
+  font-weight: 600;
+  font-size: 4rem;
+}
+
+/* CONTAINER CENTRAL */
+main {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* AREA QUE LEVA O USUARIO ATE O SIMULADO */
+.container-simulado {
+  position: relative;
+  margin-right: 2.5rem;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  height: 50vh;
+}
+.container-simulado h2 {
+  color: var(--verde);
+  font-family: var(--raj);
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+.container-simulado .button-header {
+  width: 12rem;
+  background-color: var(--verde);
+}
+
+@media (max-width: 900px) {
+}
