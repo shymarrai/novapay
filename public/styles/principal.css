@@ -6,11 +6,20 @@
   --inter: "Inter", sans-serif; /* 400 e 600 */
   --raj: "Rajdhani", sans-serif; /* 400 e 600 */
 }
-html,
-body {
-  overflow-x: hidden;
-  overflow-y: hidden;
-  background: url("/images/fundoDesktop.png") no-repeat rgb(22, 79, 24);
+@media (min-width: 900px) {
+  html,
+  body {
+    overflow-x: hidden;
+    overflow-y: hidden;
+    background: url("/images/fundoDesktop.png") no-repeat rgb(22, 79, 24);
+  }
+  .container-simulado .button-header:nth-of-type(2),
+  .zap-contact-mobile,
+  .menu-hamburguer,
+  .menu {
+    display: none;
+    visibility: hidden;
+  }
 }
 * {
   margin: 0;
@@ -63,7 +72,8 @@ header .button-header:nth-of-type(2) {
   filter: brightness(0.9);
 }
 .zap-icon {
-  width: 4rem;
+  width: 3rem;
+  margin-right: 1rem;
 }
 
 /* CONTATO WHATSAPP NO HEADER */
@@ -82,14 +92,6 @@ header .button-header:nth-of-type(2) {
   font-size: 1.1rem;
   font-weight: 600;
   color: var(--verde);
-}
-
-/* IMAGEM DO BANNER NA LANDING PAGE */
-.banner {
-  margin-top: 0;
-  position: absolute;
-  height: 86vh;
-  width: 100vw;
 }
 
 /* CONTAINER COM H1 E SPAN */
@@ -149,4 +151,103 @@ main {
 }
 
 @media (max-width: 900px) {
+  .container-h1,
+  .zap-contact,
+  .group-header,
+  .container-span {
+    display: none;
+    visibility: hidden;
+  }
+
+  header {
+    height: 30vh;
+    padding-top: 2rem;
+  }
+  .logo-header {
+    width: 60%;
+  }
+  main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .container-simulado {
+    margin: 0;
+    margin-top: 2vh;
+    width: 100vw;
+    height: 30vh;
+    background: url("/images/fundoMobile.png") no-repeat #3333;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+  }
+  .container-simulado h2 {
+    font-size: 2.3rem;
+    color: var(--branco);
+    text-align: center;
+    width: 100%;
+    margin-top: 20%;
+  }
+  .container-simulado .button-header {
+    position: absolute;
+    margin-top: 35vh;
+    width: 70vw;
+    height: 14vw;
+    font-size: 1.5rem;
+  }
+  .container-simulado .button-header:nth-of-type(2) {
+    margin-top: 45vh;
+    background-color: var(--azul);
+  }
+
+  .zap-contact-mobile {
+    position: absolute;
+    bottom: 5%;
+    width: 60vw;
+    right: 0;
+    display: flex;
+    align-items: center;
+  }
+  .zap-contact-mobile .zap-icon {
+    width: 3.5rem;
+    margin-right: 0.5rem;
+  }
+  .zap-contact-mobile span {
+    font-size: 1.8rem;
+    font-family: var(--raj);
+    color: var(--verde);
+    font-weight: 600;
+  }
+  .menu-hamburguer {
+    position: absolute;
+    width: 10%;
+    right: 1.8rem;
+    z-index: 5;
+  }
+  .menu {
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    position: absolute;
+    z-index: 3;
+    background-color: rgba(0, 0, 0, 0.93);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+  .menu div {
+    color: var(--branco);
+    font-size: 2rem;
+    font-weight: 400;
+    margin: 1rem auto;
+    font-family: var(--cabin);
+    width: 100%;
+    text-align: center;
+  }
+  .disabled {
+    visibility: hidden;
+    display: none;
+  }
+  /* MENU MOBILE */
 }
