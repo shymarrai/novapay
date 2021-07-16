@@ -8,4 +8,7 @@ server.use(express.urlencoded())
 server.get('/', (req, res) => {
   res.render('index')
 })
+server.get('/simulado', (req, res) => {
+  res.render('simulado')
+})
 module.exports = server

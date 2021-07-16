@@ -11,12 +11,17 @@
   body {
     overflow-x: hidden;
     overflow-y: hidden;
-    background: url("/images/fundoDesktop.png") no-repeat rgb(22, 79, 24);
+    height: 102vh;
+    background: url("/images/fundoDesktop.png") no-repeat center;
+    background-color: rgb(22, 79, 24);
+    background-position: 100% 45%;
+    background-size: cover;
   }
   .container-simulado .button-header:nth-of-type(2),
   .zap-contact-mobile,
   .menu-hamburguer,
-  .menu {
+  .menu,
+  .buttons .button-header:nth-of-type(3) {
     display: none;
     visibility: hidden;
   }
@@ -24,6 +29,9 @@
 * {
   margin: 0;
   padding: 0;
+}
+a {
+  text-decoration: none;
 }
 
 .header {
@@ -45,27 +53,34 @@
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  width: 30%;
+  width: 40%;
   margin-left: -5rem;
 }
 
 /* BOTOES NO HEADER */
 .button-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
   border: none;
   border-radius: 2px;
-  padding: 0.6rem;
-  height: 3rem;
-  width: 20rem;
+  padding: 0.5rem;
+  width: 100%;
+  height: 2rem;
   cursor: pointer;
   color: var(--branco);
   font-family: var(--cabin);
-  font-size: 1rem;
+  font-size: 0.8rem;
   transition: filter 0.5s;
 }
-header .button-header:nth-of-type(1) {
+header .button-header:nth-of-type(even) {
   background-color: var(--azul);
 }
-header .button-header:nth-of-type(2) {
+.buttons .button-header {
+  background-color: var(--verde);
+}
+.button-header {
   background-color: var(--verde);
 }
 .button-header:hover {
@@ -78,7 +93,7 @@ header .button-header:nth-of-type(2) {
 
 /* CONTATO WHATSAPP NO HEADER */
 .zap-contact {
-  margin-right: 3rem;
+  margin-right: 1rem;
   display: flex;
   align-items: center;
   flex-direction: row;
@@ -100,13 +115,12 @@ header .button-header:nth-of-type(2) {
   position: relative;
   height: 100%;
   width: 22vw;
-  margin-left: 4rem;
-  padding-top: 4rem;
+  padding-top: 3.8rem;
 }
 .container-span {
   position: relative;
-  margin-left: 4rem;
-  padding-top: 4rem;
+  margin-left: 2rem;
+  padding-top: 1.8em;
 }
 .container-span span {
   color: var(--branco);
@@ -117,10 +131,11 @@ header .button-header:nth-of-type(2) {
   line-height: 20px;
 }
 .container-h1 h1 {
-  color: var(--branco);
+  color: white;
   font-family: var(--inter);
   font-weight: 600;
   font-size: 4rem;
+  padding-left: 2rem;
 }
 
 /* CONTAINER CENTRAL */
@@ -141,6 +156,7 @@ main {
 }
 .container-simulado h2 {
   color: var(--verde);
+  padding: 0.5rem;
   font-family: var(--raj);
   font-size: 2.5rem;
   margin-bottom: 0.5rem;
@@ -151,6 +167,11 @@ main {
 }
 
 @media (max-width: 900px) {
+  html,
+  body {
+    width: 100vw;
+    height: 100vh;
+  }
   .container-h1,
   .zap-contact,
   .group-header,
@@ -182,31 +203,41 @@ main {
     align-items: center;
   }
   .container-simulado h2 {
+    margin-top: calc(20% - 20px);
     font-size: 2.3rem;
     color: var(--branco);
+    background-color: unset;
     text-align: center;
     width: 100%;
-    margin-top: 20%;
   }
-  .container-simulado .button-header {
-    position: absolute;
-    margin-top: 35vh;
-    width: 70vw;
+  .buttons {
+    position: relative;
+    margin-top: 25vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+    gap: 1.5rem;
+    flex-direction: column;
+  }
+  .buttons .button-header {
+    width: 80%;
     height: 14vw;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
   }
-  .container-simulado .button-header:nth-of-type(2) {
-    margin-top: 45vh;
+
+  .buttons .button-header:nth-of-type(even) {
     background-color: var(--azul);
   }
 
   .zap-contact-mobile {
-    position: absolute;
-    bottom: 5%;
+    margin: 2rem auto;
     width: 60vw;
     right: 0;
     display: flex;
     align-items: center;
+    justify-content: center;
   }
   .zap-contact-mobile .zap-icon {
     width: 3.5rem;
@@ -248,6 +279,10 @@ main {
   .disabled {
     visibility: hidden;
     display: none;
+  }
+  a {
+    text-decoration: none;
+    color: #fff;
   }
   /* MENU MOBILE */
 }
