@@ -11,7 +11,7 @@
   <main class='politica'>
     <div class='container-politica'>
       <h1>Atendimento LGPD</h1>
-      <p>O formulário de contato desta página é destinado a atender questões relacionadas à lei Geral de Proteção de Dados, para outros assuntos como dúvidas, sugestões e reclamações, acesso o nosso formulário de contato</p>
+      <p class='strong'>O formulário de contato desta página é destinado a atender questões relacionadas à lei Geral de Proteção de Dados, para outros assuntos como dúvidas, sugestões e reclamações, acesso o nosso formulário de contato.</p>
       <br />
       <p>O titular de dados pessoais possui o direito de solicitar do site NOVAPAY, a qualquer momento, mediante requisição formal, informações referentes aos seus dados.</p>
       <p>Os pedidos serão analisados conforme previsto em legislação vigente e, por questões legais, algumas solicitações podem não ser atendidas.</p>
@@ -46,17 +46,33 @@
 
       
       <form id='formulario-de-contato'>
+
         <h1>Formulário de contato</h1>
-        <label for='nome'>Nome:</label>
-        <input type='text' id='nome' />
-        <p>Informe seu nome completo para podermos saber quem é você.</p>
-        <label for='email'>Email:</label>
-        <input type='email' id='email' />
-        <label for='telefone'>Telefone:</label>
-        <input type='tel' id='telefone' />
-        <label for='mensagem'>Mensagem:</label>
-        <textarea id='mensagem'></textarea>
-        <p>seja o mais descritivo possível</p>
+
+        <div class="field">
+          <label for='nome'>Nome:
+            <input type='text' id='nome' />
+          </label>
+          <p>Informe seu nome completo para podermos saber quem é você.</p>
+        </div>
+
+        <div class="field-double">
+          <label for='email'>Email:
+            <input type='email' id='email' />
+          </label>
+
+          <label for='telefone'>Telefone:
+            <input type='tel' id='telefone' />
+          </label>
+        </div>
+
+        <div class="field">
+          <label for='mensagem'>Mensagem:
+            <textarea id='mensagem'></textarea>
+          </label>
+          <p>Seja o mais descritivo possível.</p>
+        </div>
+
 
         <input type='submit' id='enviar' value='Enviar Mensagem'/>
       </form>

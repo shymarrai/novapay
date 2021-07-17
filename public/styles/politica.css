@@ -38,3 +38,73 @@ li {
   font-size: 1rem;
   font-family: var(--inter);
 }
+#formulario-de-contato {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  font-family: var(--inter);
+}
+#formulario-de-contato p {
+  font-family: var(--cabin);
+  font-size: 0.9rem;
+}
+#formulario-de-contato div {
+  width: 60%;
+}
+#formulario-de-contato div.field {
+  display: flex;
+  flex-direction: column;
+}
+#formulario-de-contato div input,
+div textarea {
+  width: 100%;
+  height: 2rem;
+  padding: 5px;
+  border: 2px solid #666;
+  border-radius: 3px;
+  font-size: 1rem;
+  font-family: var(--inter);
+}
+.strong {
+  font-weight: bold;
+  color: var(--azul);
+}
+#formulario-de-contato div.field-double {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+#formulario-de-contato div.field-double input {
+  width: 99.5%;
+  padding-left: 5px;
+}
+#formulario-de-contato label {
+  display: flex;
+  flex-direction: column;
+}
+#formulario-de-contato textarea {
+  height: 20vh;
+  resize: none;
+}
+#formulario-de-contato input[type="submit"] {
+  border: none;
+  padding: 1rem;
+  font-size: 1rem;
+  font-family: var(--cabin);
+  background-color: var(--verde);
+  color: var(--branco);
+  cursor: pointer;
+}
+
+@media (max-width: 900px) {
+  #formulario-de-contato div {
+    width: 100%;
+  }
+  #formulario-de-contato div.field-double {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+}
