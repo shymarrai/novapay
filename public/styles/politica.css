@@ -1,0 +1,40 @@
+:root {
+  --verde: #336633;
+  --azul: #066ac7;
+  --branco: #fff;
+  --cabin: "Cabin", sans-serif; /* 400 e 500 */
+  --inter: "Inter", sans-serif; /* 400 e 600 */
+  --raj: "Rajdhani", sans-serif; /* 400 e 600 */
+}
+.politica {
+  display: flex;
+  justify-content: center;
+}
+.container-politica {
+  padding: 2rem;
+  width: 80%;
+  margin: 2rem;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: justify;
+  background-color: #f3f3f3;
+}
+.container-politica a {
+  font-weight: bold;
+  color: var(--azul);
+}
+.container-politica h1,
+h2,
+h3 {
+  font-size: 2.5rem;
+  font-family: var(--cabin);
+  margin-top: 2rem;
+  margin-bottom: 0.8rem;
+}
+
+.container-politica p,
+li {
+  font-size: 1rem;
+  font-family: var(--inter);
+}

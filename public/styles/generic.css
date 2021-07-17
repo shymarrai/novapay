@@ -1,0 +1,13 @@
+:root {
+  --verde: #336633;
+  --azul: #066ac7;
+  --branco: #fff;
+  --cabin: "Cabin", sans-serif; /* 400 e 500 */
+  --inter: "Inter", sans-serif; /* 400 e 600 */
+  --raj: "Rajdhani", sans-serif; /* 400 e 600 */
+}
+
+html,
+body {
+  background-color: var(--branco);
+}

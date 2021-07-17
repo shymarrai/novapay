@@ -11,4 +11,14 @@ server.get('/', (req, res) => {
 server.get('/simulado', (req, res) => {
   res.render('simulado')
 })
+server.get('/contato', (req, res) => {
+  res.render('contato')
+})
+server.get('/politica', (req, res) => {
+  res.render('politica')
+})
+
+
+
+
 module.exports = server

@@ -1,0 +1,68 @@
+
+  <%- include("../views/parts/head.ejs") %>
+  <link rel="stylesheet" href="/styles/generic.css" />
+  <link rel="stylesheet" href="/styles/header.css" />
+  <link rel="stylesheet" href="/styles/common.css" />
+  <link rel="stylesheet" href="/styles/politica.css" />
+</head>
+
+<body>
+  <%- include("../views/parts/header.ejs") %>
+  <main class='politica'>
+    <div class='container-politica'>
+      <h1>Atendimento LGPD</h1>
+      <p>O formulário de contato desta página é destinado a atender questões relacionadas à lei Geral de Proteção de Dados, para outros assuntos como dúvidas, sugestões e reclamações, acesso o nosso formulário de contato</p>
+      <br />
+      <p>O titular de dados pessoais possui o direito de solicitar do site NOVAPAY, a qualquer momento, mediante requisição formal, informações referentes aos seus dados.</p>
+      <p>Os pedidos serão analisados conforme previsto em legislação vigente e, por questões legais, algumas solicitações podem não ser atendidas.</p>
+
+      <p>Os titulares de dados, segundo o texto da LGPD, podem exercer os seus direitos por meio de:</p>
+      <ul>
+      <li>Confirmação da existência de tratamento;</li>
+
+      <li>Acesso aos seus dados pessoais;</li>
+
+      <li>Correção de dados incompletos, inexatos ou desatualizados;</li>
+
+      <li>Anonimização, bloqueio ou eliminação de dados desnecessários, excessivos ou tratados em desconformidade com o disposto nesta Lei;</li>
+
+      <li>Portabilidade dos dados a outro fornecedor de serviço ou produto, mediante requisição expressa, de acordo com a regulamentação da autoridade nacional, observados os segredos comercial e industrial;</li>
+
+      <li>Eliminação dos dados pessoais tratados com o consentimento do titular;</li>
+
+      <li>Informação das entidades públicas e privadas com as quais o controlador realizou uso compartilhado de dados;</li>
+
+      <li>Informação sobre a possibilidade de não fornecer consentimento e sobre as consequências da negativa;</li>
+
+      <li>Revogação do consentimento.</li>
+      </ul>
+      <h2>Como exercer os seus direitos de titular de dados?</h2>
+      <ul>
+
+      <li>Se não quiser receber nossas comunicações de marketing, pode cancelar os próximos envios clicando no link enviado junto ao e-mail de marketing;</li>
+
+      <li>Para as demais solicitações em relação aos direitos do titular de dados pessoais, entre em contato conosco através <a href="http://localhost:3000/contato#formulario-de-contato">do nosso formulário</a>;</li>
+      </ul>
+
+      
+      <form id='formulario-de-contato'>
+        <h1>Formulário de contato</h1>
+        <label for='nome'>Nome:</label>
+        <input type='text' id='nome' />
+        <p>Informe seu nome completo para podermos saber quem é você.</p>
+        <label for='email'>Email:</label>
+        <input type='email' id='email' />
+        <label for='telefone'>Telefone:</label>
+        <input type='tel' id='telefone' />
+        <label for='mensagem'>Mensagem:</label>
+        <textarea id='mensagem'></textarea>
+        <p>seja o mais descritivo possível</p>
+
+        <input type='submit' id='enviar' value='Enviar Mensagem'/>
+      </form>
+    </div>
+
+  </main>
+<script type="text/javascript" src="/scripts/actions.js"></script>
+</body>
+</html>
