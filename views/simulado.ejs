@@ -1,16 +1,96 @@
 
   <%- include("../views/parts/head.ejs") %>
-  <link rel="stylesheet" href="/styles/generic.css" />
-  <link rel="stylesheet" href="/styles/header.css" />
-  <link rel="stylesheet" href="/styles/common.css" />
+  <!-- <link rel="stylesheet" href="/styles/common.css" /> -->
+  <link rel="stylesheet" href="/styles/header-compact.css" />
+  <link rel="stylesheet" href="/styles/questionario.css" />
 </head>
 
 <body>
-  <%- include("../views/parts/header.ejs") %>
+  <%- include("../views/parts/header-compact.ejs") %>
   <main>
+    <form class='info-data'>
+      
+      <div id='div_cpf'>
+        <h1>😁Informe seu CPF</h1>
+        <label for="cpf">CPF:
+          <input type="text" id='cpf' name="cpf" placeholder="Digite seu CPF" maxlength="14" onkeypress="mask(this, mCPF);" onblur="mask(this, mCPF);" onkeyup="verifyPassQuestionButton1()"/>
+        </label>
+        <span class="obs">Precisamos do CPF para ver o valor disponível no INSS.</span>
 
+        <button type="button"  id="proximo1" name="proximo1"  onclick="passQuestionButton1()" disabled>
+          Próximo
+        </button>
+      </div>
 
+      <div id='div_contato'>
+        <h1>📱 Qual o seu contato?</h1>
+        <label for="celular">Celular:
+          <input type="text" id='celular' name="celular" placeholder="Digite seu Telefone" onkeypress="mask(this, mphoneC);" onblur="mask(this, mphoneC);" onkeyup="verifyPassQuestionButton2()"/>
+          <span id='adendo'>Não se esqueça do nº 9 antes do seu número de celular.</span>
+        </label>
+
+        <label for="email">Email:
+          <input type="text" id='email' name="email" placeholder="Digite seu Email" onkeypress="validacaoEmail(this)"  maxlength="60" size='65' onkeyup="verifyPassQuestionButton2()"/>
+          <span id='msgemail'></span>
+        </label>
+        <span class="obs">Esse será o nosso principal canal de comunicação com você, portanto,
+          é muito importante que esteja correto..
+          <br />O Email é opcional.<br/>
+
+          
+        </span>
+
+          <button type="button" id="proximo2" name="proximo2" disabled>
+            Próximo
+          </button>
+      </div>
+
+      <div id='div_carreira'>
+        <h1>🙂 De onde recebe seu salário ou aposentadoria?</h1>
+        <label for="carreira">Carreira:
+          <select name="carreira" placeholder="Selecione sua carreira">
+            <option value="" disabled selected>Selecione sua carreira</option>
+            <option value="Servidor Federal">Servidor Federal</option>
+            <option value="Servidor Estadual">Servidor Estadual</option>
+            <option value="Servidor Municipal">Servidor Municipal</option>
+            <option value="Servidor GDF">Servidor GDF</option>
+            <option value="Forças Armadas">Forças Armadas</option>
+            <option value="Pensionistas">Pensionistas</option>
+            <option value="Aposentado">Aposentado</option>
+            <option value="Empresário">Empresário</option>
+            <option value="Autônomo">Autônomo</option>
+            <option value="Estagiário">Estagiário</option>
+            <option value="Funcionário de Empresa Privada">Funcionário de Empresa Privada</option>
+
+          </select>
+        </label>
+
+          <button type="button" id="proximo3" name="proximo3" disabled>
+            Próximo
+          </button>
+        </div>
+
+        <div id='div_beneficio'>
+          <h1>💰 Qual o valor do seu benefício?</h1>
+          <label for="valor">Valor do Benefício:
+            <input type="text" name="valor" />
+          </label>
+            <span class="termos">Ao continuar você aceita a nossa <a href='/politica'>Políticas de Privacidade</a></span>
+          
+            <input type="submit" value="Aceitar e continuar" />
+      </div>
+    </form>
+
+    <footer>
+      <div class="confirmation">
+        <p>Utilizamos cookies de terceiros e tecnologias semelhantes de acordo com a 
+          nossa <a href="/politica">Política de Privacidade</a> e, ao continuar navegando, 
+          você concorda com estas condições. <button type="button" onClick='accepted()'>Aceitar</button></p>
+        
+      </div>
+    </footer>
   </main>
 <script type="text/javascript" src="/scripts/actions.js"></script>
+<script type="text/javascript" src="/scripts/mascaras.js"></script>
 </body>
 </html>

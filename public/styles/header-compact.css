@@ -1,0 +1,89 @@
+:root {
+  --verde: #336633;
+  --azul: #066ac7;
+  --branco: #fff;
+  --cabin: "Cabin", sans-serif; /* 400 e 500 */
+  --inter: "Inter", sans-serif; /* 400 e 600 */
+  --raj: "Rajdhani", sans-serif; /* 400 e 600 */
+}
+*::selection {
+  background: #000;
+  color: #fff;
+}
+* {
+  margin: 0;
+}
+
+html,
+body {
+  width: 100vw;
+  height: 100vh;
+  overflow-x: hidden;
+}
+
+.header {
+  height: 16vh;
+  width: 100%;
+  background-color: #fefefe;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo-header {
+  width: 60%;
+}
+
+.menu-hamburguer {
+  width: 3%;
+  margin-right: 5rem;
+  z-index: 5;
+  cursor: pointer;
+}
+.menu {
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  position: absolute;
+  z-index: 3;
+  background-color: rgba(0, 0, 0, 0.93);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.menu div {
+  height: 20vw;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.menu div div {
+  color: var(--branco);
+  font-size: 2rem;
+  font-weight: 400;
+  font-family: var(--cabin);
+  width: 100%;
+  text-align: center;
+  transition: all 0.5s;
+}
+
+.disabled {
+  visibility: hidden;
+  display: none;
+}
+
+a.item {
+  text-decoration: none;
+  color: var(--branco);
+  transition: all 0.5s;
+}
+.menu div div:hover {
+  background-color: var(--azul);
+  width: 100%;
+}
