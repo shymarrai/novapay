@@ -63,15 +63,27 @@ function verifyPassQuestionButton2(){
   const email = document.getElementById('email')
   const verifyEmail = validacaoEmail(email)
   const msgemail = document.getElementById("msgemail")
+  
+  if(msgemail.innerHTML.indexOf('verifique')){
+    msgemail.innerHTML = `Esse será o nosso principal canal de comunicação com você, portanto,
+          é muito importante que esteja correto..
+          <br />O Email é opcional.<br/>`
+  }
 
   if(verifyEmail === false){
-    msgemail.innerText = "Email inválido, por favor verifique"
+    msgemail.innerHTML =  msgemail.innerHTML+"<br/>Email inválido, por favor verifique"
     email.style.border = '3px solid tomato';
   }else if(verifyEmail === true){
     email.style.border = '3px solid #61b161';
-    msgemail.innerText = ""
+    msgemail.innerHTML = `Esse será o nosso principal canal de comunicação com você, portanto,
+    é muito importante que esteja correto..
+    <br />O Email é opcional.<br/>`
   }
 
+  if(celular.value.length === 15 && celular.value[5] === '9'){
+    celular.style.border = '3px solid #61b161'
+    button2.innerText = "Próximo"
+  }
 
   if(celular.value.length === 15 && celular.value[5] === '9' && verifyEmail === true){
     button2.disabled = false
@@ -83,7 +95,7 @@ function verifyPassQuestionButton2(){
 
     button2.disabled = true
     celular.style.border = '3px solid tomato';
-  }else{
+  }else if(verifyEmail !== true && celular.value.length !== 15){
     button2.innerText = "Próximo"
     celular.style.border = '3px solid tomato';
     button2.disabled = true
@@ -92,6 +104,8 @@ function verifyPassQuestionButton2(){
 
   
 }
+
+
 
 function passQuestionButton2(){
   
@@ -107,14 +121,77 @@ function passQuestionButton2(){
 
 
 
+function verifyPassQuestionButton3(){
+  const carreira = document.querySelector('#carreira');
+  const button3 = document.getElementById("proximo3")
+
+  if(carreira.value !== ''){
+    button3.disabled = false
+  }
+}
+
+function passQuestionButton3(){
+  div_carreira.classList.remove('enable')
+  div_carreira.classList.add('disable')
+  
+  div_beneficio.classList.remove('disable')
+  div_beneficio.classList.add('enable')
+
+}
+
+
+
+
+function verifyPassFormAccepted(){
+  const valor = document.querySelector('#valor');
+  const accepted = document.querySelector('#accepted');
+  const buttonEnviar = document.getElementById("enviar")
+  
+  if(valor.value !== '' && valor.value !== ' ' && accepted.checked ){
+    buttonEnviar.disabled = false
+  }else{
+    buttonEnviar.disabled = true
+  }
+}
 
 
 
 
 
+function sendForm(){
+  const cpf = document.getElementById('cpf')
+  const celular = document.getElementById('celular')
+  const email = document.getElementById('email')
+  const carreira = document.getElementById('carreira')
+  const valor = document.getElementById('valor')
+  const politica = document.getElementById('politica')
+  const buttonEnviar = document.getElementById("enviar")
 
+  if(politica.innerHTML.indexOf('carreira') || politica.innerHTML.indexOf('cpf') || politica.innerHTML.indexOf('contato') || politica.innerHTML.indexOf('valor')){
+    politica.innerHTML = `Ao continuar você aceita as nossas
+    <a href='/politica' target='_blank'>Políticas de Privacidade</a>`
+  }
+  if((celular.value == '' || celular.length < 11) || email.value == '' || email.indexOf('@') || email.indexOf('.com') ){
+    politica.innerHTML = politica.innerHTML+"<br/> Falta informação de contato, por favor verifique 🙂"
+    buttonEnviar.disabled = true
+  }
 
+  if(carreira.value == '' || carreira.length < 0){
+    politica.innerHTML = politica.innerHTML+"<br/> Falta informação de carreira, por favor verifique 🙂"
+    buttonEnviar.disabled = true
+  }
 
+  if(valor.value == '' || valor.length < 0){
+    politica.innerHTML = politica.innerHTML+"<br/> Falta informação de valor, por favor verifique 🙂"
+    buttonEnviar.disabled = true
+  }
+
+  if(cpf.value == '' || cpf.length < 0){
+    politica.innerHTML = politica.innerHTML+"<br/> Falta informação de cpf, por favor verifique 🙂"
+    buttonEnviar.disabled = true
+  }
+
+}
 
 
 

@@ -24,23 +24,22 @@
 
       <div id='div_contato'>
         <h1>📱 Qual o seu contato?</h1>
-        <label for="celular">Celular:
-          <input type="text" id='celular' name="celular" placeholder="Digite seu Telefone" onkeypress="mask(this, mphoneC);" onblur="mask(this, mphoneC);" onkeyup="verifyPassQuestionButton2()"/>
+        <label for="celular" style="margin-top: -0.5rem;">Celular:
+          <input type="text" id='celular' name="celular"  style="height: 0.5rem;" placeholder="Digite seu Telefone" onkeypress="mask(this, mphoneC);" onblur="mask(this, mphoneC);" onkeyup="verifyPassQuestionButton2()"/>
           <span id='adendo'>Não se esqueça do nº 9 antes do seu número de celular.</span>
         </label>
 
-        <label for="email">Email:
-          <input type="text" id='email' name="email" placeholder="Digite seu Email" onkeypress="validacaoEmail(this)"  maxlength="60" size='65' onkeyup="verifyPassQuestionButton2()"/>
-          <span id='msgemail'></span>
+        <label for="email" style="margin-top: -1.5rem;" >Email:
+          <input type="text" id='email' name="email" style="height: 0.5rem; margin-bottom: -2rem; " placeholder="Digite seu Email" style="margin-bottom: -30px;" onkeypress="validacaoEmail(this)"  maxlength="60" size='65' onkeyup="verifyPassQuestionButton2()"/>
         </label>
-        <span class="obs">Esse será o nosso principal canal de comunicação com você, portanto,
+        <span id='msgemail' class="obs" >Esse será o nosso principal canal de comunicação com você, portanto,
           é muito importante que esteja correto..
           <br />O Email é opcional.<br/>
 
           
         </span>
 
-          <button type="button" id="proximo2" name="proximo2" disabled>
+          <button type="button" id="proximo2" name="proximo2" onclick="passQuestionButton2()" disabled>
             Próximo
           </button>
       </div>
@@ -48,7 +47,7 @@
       <div id='div_carreira'>
         <h1>🙂 De onde recebe seu salário ou aposentadoria?</h1>
         <label for="carreira">Carreira:
-          <select name="carreira" placeholder="Selecione sua carreira">
+          <select name="carreira" id="carreira" placeholder="Selecione sua carreira" onclick="verifyPassQuestionButton3()" >
             <option value="" disabled selected>Selecione sua carreira</option>
             <option value="Servidor Federal">Servidor Federal</option>
             <option value="Servidor Estadual">Servidor Estadual</option>
@@ -65,7 +64,7 @@
           </select>
         </label>
 
-          <button type="button" id="proximo3" name="proximo3" disabled>
+          <button type="button" id="proximo3" name="proximo3"  onclick="passQuestionButton3()" disabled>
             Próximo
           </button>
         </div>
@@ -73,22 +72,23 @@
         <div id='div_beneficio'>
           <h1>💰 Qual o valor do seu benefício?</h1>
           <label for="valor">Valor do Benefício:
-            <input type="text" name="valor" />
+            <input type="text" name="valor" id="valor" onkeyup='formatarMoeda(this)' onchange="verifyPassFormAccepted()" onkeypress="verifyPassFormAccepted()" onblur="verifyPassFormAccepted()" onfocus="verifyPassFormAccepted()" onfocusout="verifyPassFormAccepted()" >
           </label>
-            <span class="termos">Ao continuar você aceita a nossa <a href='/politica'>Políticas de Privacidade</a></span>
-          
-            <input type="submit" value="Aceitar e continuar" />
+            <span id='politica' class="obs">Ao continuar você aceita as nossas
+              <a href='/politica' target='_blank'>Políticas de Privacidade</a>
+            
+            </span>
+            
+            <div style="display:flex; flex-direction:row; align-items:center; margin: 1rem">
+              <input type='checkbox' id='accepted' value="accepted" style="width:20px;" onchange="verifyPassFormAccepted()"/>
+              <label for="accepted" >Li e aceito as Políticas de privacidade</label>
+            </div>
+            <button type="submit" id='enviar' onclick="sendForm()" disabled >
+              Aceitar e continuar
+            </button>
       </div>
     </form>
 
-    <footer>
-      <div class="confirmation">
-        <p>Utilizamos cookies de terceiros e tecnologias semelhantes de acordo com a 
-          nossa <a href="/politica">Política de Privacidade</a> e, ao continuar navegando, 
-          você concorda com estas condições. <button type="button" onClick='accepted()'>Aceitar</button></p>
-        
-      </div>
-    </footer>
   </main>
 <script type="text/javascript" src="/scripts/actions.js"></script>
 <script type="text/javascript" src="/scripts/mascaras.js"></script>

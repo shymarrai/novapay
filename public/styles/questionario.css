@@ -7,6 +7,10 @@
   --inter: "Inter", sans-serif; /* 400 e 600 */
   --raj: "Rajdhani", sans-serif; /* 400 e 600 */
 }
+html,
+body {
+  overflow: hidden;
+}
 form {
   width: 70vw;
   height: 70vh;
@@ -96,7 +100,8 @@ button {
   font-size: 0.9rem;
 }
 
-.enable input {
+.enable input,
+select {
   width: 30vw;
   border: 3px solid #f0f0f0;
   border-radius: 6px;
@@ -135,7 +140,9 @@ button {
   border-radius: 6px;
   font-family: var(--inter);
 }
-
+select {
+  margin-bottom: 2rem;
+}
 button:disabled {
   background-color: #999;
   color: #000;
@@ -150,4 +157,27 @@ button:hover {
 .disable {
   visibility: hidden;
   display: none;
+}
+
+@media (max-width: 900px) {
+  .enable h1 {
+    margin: 0 auto;
+    position: relative;
+    margin-top: -10rem;
+    margin-bottom: 3rem;
+  }
+  .enable {
+    padding-top: 2rem;
+  }
+  label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  #adendo {
+    text-align: center;
+  }
+  select {
+    width: 100%;
+  }
 }
