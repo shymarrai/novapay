@@ -7,15 +7,15 @@ const server = express();
 
 
 //conexão com o banco de dados
-// mongoose.connect(process.env.MONGO_CONNECTION_URL, { useUnifiedTopology: true, useNewUrlParser: true },
-//   (error) => {
-//     if (error) { console.log(error) }
+mongoose.connect(process.env.MONGO_CONNECTION_URL, { useUnifiedTopology: true, useNewUrlParser: true },
+  (error) => {
+    if (error) { console.log(error) }
 
-//     else { console.log('Mongo Connected') }
+    else { console.log('Mongo Connected') }
 
-//   })
-  //habilitando uma função deprecated do mongoose para update
-  // mongoose.set('useFindAndModify', false);  
+  })
+  // habilitando uma função deprecated do mongoose para update
+  mongoose.set('useFindAndModify', false);  
 
   //escolhendo template engine
   server.set('view engine', 'ejs')

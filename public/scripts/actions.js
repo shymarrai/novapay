@@ -3,16 +3,6 @@ const div_contato = document.getElementById('div_contato')
 const div_carreira = document.getElementById('div_carreira')
 const div_beneficio = document.getElementById('div_beneficio')
 
-function menu(){
-  const menu_hamburger_abrir = document.querySelector('#menu-abrir')
-  const menu_hamburger_fechar = document.querySelector('#menu-fechar')
-  const menu = document.querySelector('.menu')
-
-  menu_hamburger_abrir.classList.toggle("disabled");
-  menu_hamburger_fechar.classList.toggle("disabled");
-  menu.classList.toggle("disabled");
-
-}
 
 div_cpf.classList.add('enable')
 div_contato.classList.add('disable')
@@ -119,7 +109,7 @@ function verifyPassFormAccepted(){
   const accepted = document.querySelector('#accepted');
   const buttonEnviar = document.getElementById("enviar")
   
-  if(valor.value !== '' && valor.value !== ' ' && accepted.checked ){
+  if(valor.value !== '' && valor.value !== ' ' && accepted.checked  ){
     buttonEnviar.disabled = false
   }else{
     buttonEnviar.disabled = true
@@ -199,12 +189,6 @@ function verifyConsult(){
 
 
 
-
-
-function accepted(){
-  const wanning = document.querySelector('footer')
-  wanning.classList.add('disabled')
-}
 
 
 function validacaoEmail(field) {

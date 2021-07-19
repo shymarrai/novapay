@@ -12,7 +12,7 @@
 <body >
   <%- include("../views/parts/header-compact.ejs") %>
   <main>
-    <form class='info-data'>
+    <form class='info-data' method='post' action='/acompanhar_proposta'>
       
       <div id='div_cpf' class='animate__animated animate__bounceInRight' >
         <h1 >😁Informe seu CPF</h1>
@@ -27,7 +27,7 @@
         </span>
         
         <div style="display:flex; flex-direction:row; align-items:center; margin: 1rem">
-          <input type='checkbox' id='accepted' value="accepted" style="width:20px;" onchange="verifyConsult()"/>
+          <input type='checkbox' id='accepted' value="accepted" name='accepted' style="width:20px;" onchange="verifyConsult()"/>
           <label for="accepted" >Li e aceito as Políticas de privacidade</label>
         </div>
         <button type="submit" id='consultar' onclick="sendForm()" disabled >
@@ -39,5 +39,6 @@
   </main>
 <script type="text/javascript" src="/scripts/actions.js"></script>
 <script type="text/javascript" src="/scripts/mascaras.js"></script>
+<script type="text/javascript" src="/scripts/scripts.js"></script>
 </body>
 </html>
