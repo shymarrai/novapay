@@ -17,6 +17,12 @@ server.get('/contato', (req, res) => {
 server.get('/politica', (req, res) => {
   res.render('politica')
 })
+server.get('/acompanhar_proposta', (req, res) => {
+  res.render('proposta')
+})
+server.get('/limite_de_compra', (req, res) => {
+  res.render('limite')
+})
 
 
 

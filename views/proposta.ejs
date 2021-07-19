@@ -1,0 +1,43 @@
+
+  <%- include("../views/parts/head.ejs") %>
+  <!-- <link rel="stylesheet" href="/styles/common.css" /> -->
+  <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+/>
+  <link rel="stylesheet" href="/styles/header-compact.css" />
+  <link rel="stylesheet" href="/styles/questionario.css" />
+</head>
+
+<body >
+  <%- include("../views/parts/header-compact.ejs") %>
+  <main>
+    <form class='info-data'>
+      
+      <div id='div_cpf' class='animate__animated animate__bounceInRight' >
+        <h1 >😁Informe seu CPF</h1>
+        <label for="cpf_consulta">CPF:
+          <input type="text" id='cpf_consulta' name="cpf_consulta" placeholder="Digite seu CPF" maxlength="14" onkeypress="mask(this, mCPF);" onblur="mask(this, mCPF);" onkeyup="verifyConsult()"/>
+          <span id='adendo'>Precisamos do CPF para consultar seu status.</span>
+        </label>  
+
+        <span id='politica' class="obs">Ao continuar você aceita as nossas
+          <a href='/politica' target='_blank'>Políticas de Privacidade</a>
+        
+        </span>
+        
+        <div style="display:flex; flex-direction:row; align-items:center; margin: 1rem">
+          <input type='checkbox' id='accepted' value="accepted" style="width:20px;" onchange="verifyConsult()"/>
+          <label for="accepted" >Li e aceito as Políticas de privacidade</label>
+        </div>
+        <button type="submit" id='consultar' onclick="sendForm()" disabled >
+          Consultar
+        </button>
+      </div>
+    </form>
+
+  </main>
+<script type="text/javascript" src="/scripts/actions.js"></script>
+<script type="text/javascript" src="/scripts/mascaras.js"></script>
+</body>
+</html>

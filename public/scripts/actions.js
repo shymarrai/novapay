@@ -21,40 +21,38 @@ div_beneficio.classList.add('disable')
 
 function verifyPassQuestionButton1(){
 
-  const button1 = document.getElementById('proximo1')
-  const campoCpf = document.getElementById('cpf')
+  const button = document.getElementById('proximo1')
+  const campo = document.getElementById('cpf')
+  const campoNumbers = campo.value.replace(/[^\d]+/g,'')
+  
 
-  if(campoCpf.value.length === 14){
-    button1.disabled = false
-    campoCpf.style.border = '3px solid #61b161';
+  if(campo.value.length === 14 && validarCPF(campoNumbers)){
+    button.disabled = false
+    campo.style.border = '3px solid #61b161';
   }else{
-    button1.disabled = true
-    campoCpf.style.border = '3px solid tomato';
+    button.disabled = true
+    campo.style.border = '3px solid tomato';
   }
   
 }
 
-function passQuestionButton1(){
+function pass(div_atual, div_proxima){
   
-  div_cpf.classList.remove('enable')
-  div_cpf.classList.add('disable')
+  div_atual.classList.remove('animate__bounceInRight')
+  div_atual.classList.add('animate__bounceOutLeft')
   
+  setTimeout(() => {
+    div_atual.classList.remove('enable')
+    div_atual.classList.add('disable')
+  }, 600)
+  setTimeout(() => {
+    div_proxima.classList.remove('disable')
+    div_proxima.classList.add('enable')
+    div_proxima.classList.add('animate__bounceInRight')
+  }, 600)
   
-  div_contato.classList.remove('disable')
-  div_contato.classList.add('enable')
 
 }
-
-
-
-
-
-
-
-
-
-
-
 
 
 function verifyPassQuestionButton2(){
@@ -105,22 +103,6 @@ function verifyPassQuestionButton2(){
   
 }
 
-
-
-function passQuestionButton2(){
-  
-  div_contato.classList.remove('enable')
-  div_contato.classList.add('disable')
-  
-  
-  div_carreira.classList.remove('disable')
-  div_carreira.classList.add('enable')
-
-}
-
-
-
-
 function verifyPassQuestionButton3(){
   const carreira = document.querySelector('#carreira');
   const button3 = document.getElementById("proximo3")
@@ -129,16 +111,6 @@ function verifyPassQuestionButton3(){
     button3.disabled = false
   }
 }
-
-function passQuestionButton3(){
-  div_carreira.classList.remove('enable')
-  div_carreira.classList.add('disable')
-  
-  div_beneficio.classList.remove('disable')
-  div_beneficio.classList.add('enable')
-
-}
-
 
 
 
@@ -195,10 +167,45 @@ function sendForm(){
 
 
 
+
+function verifyConsult(){
+  const cpf = document.getElementById('cpf_consulta')
+  const consultar = document.getElementById('consultar')
+  const accepted = document.getElementById('accepted')
+
+  const campoNumbers = cpf.value.replace(/[^\d]+/g,'')
+  
+  if(cpf.value.length === 14 && validarCPF(campoNumbers)){
+    cpf.style.border = '3px solid #61b161';
+    if(accepted.checked){
+      consultar.disabled = false
+    }
+  }else{
+    cpf.style.border = '3px solid tomato';
+    consultar.disabled = true
+  }  
+
+  if(!accepted.checked){
+    consultar.disabled = true
+  }
+
+
+}
+
+
+
+
+
+
+
+
+
+
 function accepted(){
   const wanning = document.querySelector('footer')
   wanning.classList.add('disabled')
 }
+
 
 function validacaoEmail(field) {
   usuario = field.value.substring(0, field.value.indexOf("@"));
@@ -223,3 +230,39 @@ function validacaoEmail(field) {
 
 
 
+  function validarCPF(cpf) {	
+    cpf = cpf.replace(/[^\d]+/g,'');	
+    if(cpf == '') return false;	
+    // Elimina CPFs invalidos conhecidos	
+    if (cpf.length != 11 || 
+      cpf == "00000000000" || 
+      cpf == "11111111111" || 
+      cpf == "22222222222" || 
+      cpf == "33333333333" || 
+      cpf == "44444444444" || 
+      cpf == "55555555555" || 
+      cpf == "66666666666" || 
+      cpf == "77777777777" || 
+      cpf == "88888888888" || 
+      cpf == "99999999999")
+        return false;		
+    // Valida 1o digito	
+    add = 0;	
+    for (i=0; i < 9; i ++)		
+      add += parseInt(cpf.charAt(i)) * (10 - i);	
+      rev = 11 - (add % 11);	
+      if (rev == 10 || rev == 11)		
+        rev = 0;	
+      if (rev != parseInt(cpf.charAt(9)))		
+        return false;		
+    // Valida 2o digito	
+    add = 0;	
+    for (i = 0; i < 10; i ++)		
+      add += parseInt(cpf.charAt(i)) * (11 - i);	
+    rev = 11 - (add % 11);	
+    if (rev == 10 || rev == 11)	
+      rev = 0;	
+    if (rev != parseInt(cpf.charAt(10)))
+      return false;		
+    return true;   
+  }
