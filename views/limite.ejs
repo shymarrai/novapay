@@ -12,14 +12,14 @@
 <body >
   <%- include("../views/parts/header-compact.ejs") %>
   <main>
-    <form class='info-data'>
+    <form class='info-data' method='post' action='/limite_de_compra'>
       
       <div id='div_cpf' class='animate__animated animate__bounceInRight' >
         <h1 >😁Informe seu CPF</h1>
         <label for="cpf">CPF:
           <input type="text" id='cpf' name="cpf" placeholder="Digite seu CPF" maxlength="14" onkeypress="mask(this, mCPF);" onblur="mask(this, mCPF);" onkeyup="verifyPassQuestionButton1()"/>
         </label>
-        <span class="obs">Precisamos do CPF para ver o valor disponível no INSS.</span>
+        <span class="obs">Precisamos do CPF para consulta do limite disponível.</span>
 
         <button type="button"  id="proximo1" name="proximo1"  onclick="pass(div_cpf,div_contato)" disabled>
           Próximo
@@ -84,7 +84,7 @@
             </span>
             
             <div style="display:flex; flex-direction:row; align-items:center; margin: 1rem">
-              <input type='checkbox' id='accepted' value="accepted" style="width:20px;" onchange="verifyPassFormAccepted()"/>
+              <input type='checkbox' id='accepted' value="accepted" name='accepted' style="width:20px;" onchange="verifyPassFormAccepted()"/>
               <label for="accepted" >Li e aceito as Políticas de privacidade</label>
             </div>
             <button type="submit" id='enviar' onclick="sendForm()" disabled >

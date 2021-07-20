@@ -13,3 +13,36 @@ function menu(){
   menu.classList.toggle("disabled");
 
 }
+var clients = document.querySelectorAll('.msg')
+clients = [...clients]
+
+for(let i = 1; i < clients.length; i++) {
+  clients[i].classList.add('disabled')
+}
+
+
+
+function controlsBefore(index){
+  for(let i = 0; i < clients.length; i++) {
+    if(i == index && i - 1 >= 0){
+      clients[index].classList.remove('enable')
+      clients[index].classList.add('disabled')
+
+      clients[index - 1].classList.add('enable')
+      clients[index -1].classList.remove('disabled')
+    }
+  }
+}
+
+function controlsAfter(index){
+  for(let i = 0; i < clients.length; i++) {
+    if(i == index && i + 1< clients.length){
+
+      clients[index].classList.remove('enable')
+      clients[index].classList.add('disabled')
+
+      clients[index + 1].classList.add('enable')
+      clients[index + 1].classList.remove('disabled')
+    }
+  }
+}

@@ -1,0 +1,36 @@
+
+  <%- include("../views/parts/head.ejs") %>
+  <!-- <link rel="stylesheet" href="/styles/common.css" /> -->
+  <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+/>
+  <link rel="stylesheet" href="/styles/header-compact.css" />
+  <link rel="stylesheet" href="/styles/common.css" />
+</head>
+
+<body >
+  <%- include("../views/parts/header-compact.ejs") %>
+  <main>
+      
+      <div id='message' class='animate__animated animate__bounceInRight' >
+        <h1 >
+          <%= title %>
+        </h1>
+        <span class='obs'>
+          <% for(let i = 0; i <message.length; i++){%>
+            <%= message[i] %><br />
+          <%}%>
+        </span>
+
+          <a href='<%= urlDirection %>'> 
+            <%= urlText%> 
+          </a>
+
+    </div>
+
+  </main>
+<script type="text/javascript" src="/scripts/actions.js"></script>
+<script type="text/javascript" src="/scripts/scripts.js"></script>
+</body>
+</html>

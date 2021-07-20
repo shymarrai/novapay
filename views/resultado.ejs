@@ -1,0 +1,97 @@
+
+  <%- include("../views/parts/head.ejs") %>
+  <!-- <link rel="stylesheet" href="/styles/common.css" /> -->
+  <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+/>
+  <link rel="stylesheet" href="/styles/header.css" />
+  <link rel="stylesheet" href="/styles/header-compact.css" />
+  <link rel="stylesheet" href="/styles/common.css" />
+  <link rel="stylesheet" href="/styles/principal.css" />
+</head>
+
+<body >
+  <%- include("../views/parts/header.ejs") %>
+  <main>
+      
+      <div id='message' class='animate__animated animate__bounceInRight' >
+        <% for(let i = 0; i< message.length; i++){ %>
+            <div class='msg <%= i %> obs' style='margin:0;padding: 0;'>
+              <h1 >
+                😄<%= title %>
+              </h1>
+              <span >Resultado <span style='color:#066ac7; font-weight:bold;'><%= i+ 1 %></span> de <%= message.length %></span><br />
+
+              <div class="content">
+                <div>
+                  <span  class='indice'>
+                    CPF:
+                  </span>
+                  <span  class='indice'>
+                    Email:
+                  </span>
+                  <span class='indice'>
+                    Celular:
+                  </span>
+                  <span class='indice'>
+                    Carreira:
+                  </span>
+                  <span class='indice'>
+                    Valor:
+                  </span>
+                  <span class='indice'>
+                    Status:
+                </span>
+                  <span class='indice'>
+                      Serviço:
+                    </span>
+                </div>
+
+                <div>
+                  <span>
+                    <%= message[i]?.cpf %>
+                  </span>
+                  <span>
+                    <%= message[i]?.email %>
+                  </span>
+                  <span>
+                    <%= message[i]?.celular %>
+                  </span>
+                  <span>
+                    <%= message[i]?.carreira %>
+                  </span>
+                  <span>
+                    <%= message[i]?.valor_beneficio %>
+                  </span>
+                  <span>
+                    <%= message[i]?.status %>
+                  </span>
+                  <span>
+                    <%= message[i]?.servico %>
+                  </span>
+                </div>
+              </div>
+                
+
+
+              <div class="controls">
+                <button class='before' id='before' onclick="controlsBefore(<%= i %> )"> 
+                  <img src="images/arrowLeft.svg" alt='Voltar'  />
+                </button>
+                <button class='after' onclick="controlsAfter( <%= i %> )"> 
+                  <img src="images/arrowRight.svg" alt='Próximo'  /> 
+                </button>
+              </div>
+            </div>
+        <%}%>
+        <a class='back' href='<%= urlDirection %>'> 
+          <%= urlText%> 
+        </a>
+    </div>
+
+  </main>
+<script type="text/javascript" src="/scripts/actions.js"></script>
+<script type="text/javascript" src="/scripts/scripts.js"></script>
+</body>
+</html>
