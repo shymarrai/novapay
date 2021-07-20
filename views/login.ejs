@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- displays site properly based on user's device -->
+  <link rel="stylesheet" href="/styles/register.css">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/logo.jpg">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
+  <title>NovaPay - Administração</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    .attribution {
+      font-size: 11px;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body style='display: flex; align-items: center;justify-content:center; flex-direction:column;'>
+  <main>
+    <div class="card-profile">
+      <img src="/images/logo-global.png" alt="Perfil" class="profile">
+      <form method="POST" action="/login" name="myForm">
+
+        <label for='username'>Login</label>
+        <input type="text" name='username' placeholder="Login" />
+
+        <label for='password'>Senha</label>
+        <input type="password" name='password' placeholder="Senha" />
+
+        <input type="submit" value="Entrar" style='cursor: pointer;'>
+      </form>
+
+    </div>
+  </main>
+  <div class="attribution">
+    Desenvolvido por <a href="https://github.com/shymarrai" target='__blank'>Bruno Gomes</a>.
+  </div>
+</body>
+
+</html>

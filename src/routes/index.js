@@ -1,5 +1,6 @@
 const express = require('express')
 const ClientController = require('../controllers/ClientController')
+const AdminController = require('../controllers/AdminController')
 require('dotenv').config()
 const server = express()
 
@@ -37,6 +38,18 @@ server.get('/contato', (req, res) => {
 server.get('/politica', (req, res) => {
   res.render('politica')
 })
+
+server.get('/login', AdminController.logar)
+server.post('/login', AdminController.login)
+server.get('/save', AdminController.save)
+
+
+
+server.get('/admin/:token/:username', AdminController.admin)
+
+
+server.post('/admin/:token/site/:username', AdminController.updateSite)
+server.post('/admin/:token/user/:username', AdminController.updateUser)
 
 
 module.exports = server

@@ -1,0 +1,177 @@
+:root {
+  --verde: #336633;
+  --azul: #066ac7;
+  --branco: #fff;
+  --cabin: "Cabin", sans-serif; /* 400 e 500 */
+  --inter: "Inter", sans-serif; /* 400 e 600 */
+  --raj: "Rajdhani", sans-serif; /* 400 e 600 */
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+.logo {
+  width: 100%;
+  filter: brightness(100);
+}
+header {
+  width: 100vw;
+  position: absolute;
+  background-color: rgb(33, 95, 228);
+  height: 10vh;
+  padding-left: 110px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 0;
+  margin: 0;
+}
+main {
+  width: 100%;
+  height: 95vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+form {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 1rem;
+
+  width: 30%;
+  height: 30%;
+}
+
+aside.sidebar {
+  position: fixed;
+  height: 100%;
+  width: 10vw;
+  padding: 3.2rem 2rem; /* 32px 24px*/
+  background: rgb(33, 95, 228);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-between;
+}
+span {
+  font-size: 0.8rem;
+  font-family: var(--cabin);
+  color: #333;
+  margin-top: -1rem;
+}
+
+.width-sidebar {
+  padding-left: 110px;
+}
+#page-create {
+  display: flex;
+  max-height: 100vh;
+}
+aside.sidebar .menu {
+  width: 100%;
+  height: 88%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 0;
+}
+aside.sidebar .menu button {
+  border: none;
+  padding: 0.5rem;
+  width: 100%;
+  background-color: var(--branco);
+  font-size: 1rem;
+  font-family: var(--cabin);
+  color: #333;
+  margin-top: 0.5rem;
+  cursor: pointer;
+}
+
+input[type="submit"] {
+  background-color: var(--azul);
+  border: none;
+  height: 6vh;
+  width: 50%;
+  margin: 0 auto;
+  color: var(--branco);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+aside.sidebar .menu button:hover,
+input[type="submit"]:hover {
+  filter: brightness(0.9);
+}
+aside.sidebar .menu button.selected {
+  background-color: var(--verde);
+  color: var(--branco);
+}
+label {
+  font-weight: bold;
+  font-size: 1rem;
+  font-family: var(--cabin);
+  color: var(--azul);
+}
+input,
+select {
+  width: 90%;
+  height: 2vh;
+  padding: 0.5rem;
+  border-radius: 10px;
+  border: 2px solid var(--verde);
+  font-size: 1rem;
+  margin: 0 1rem;
+  font-family: var(--cabin);
+  color: var(--azul);
+}
+.group {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+select {
+  width: 36%;
+  height: 100%;
+}
+.group-consulta {
+  margin-top: 4rem;
+  width: 100%;
+  padding: 0;
+}
+.group-consulta label {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+
+.group-buttons input {
+  width: 70%;
+}
+.group-buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+input.minus {
+  width: 70%;
+}
+.disabled {
+  display: none;
+  visibility: hidden;
+}
+h1 {
+  font-size: 2rem;
+  font-family: var(--raj);
+  color: #fff;
+  top: 10px;
+}

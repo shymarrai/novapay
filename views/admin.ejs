@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/styles/admin.css" />
+  <link rel="icon" href="/images/favicon.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Cabin:wght@400;500&family=Inter&family=Rajdhani:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap" rel="stylesheet">
+  <title>Area do Administrador</title>
+</head>
+<body>
+  <header>
+    <h1 id='title'>Admin do Site</h1>
+  </header>
+  <div id="page-create">
+    <aside class="animation-right sidebar">
+      <img src="/images/logo-global.png" alt="Perfil" class="logo">
+      <div class='menu'>
+        <button class="selected" value='site' id='buttonMenuSite' onclick="SelectMenu(this)">Site</button>
+        <button id='buttonMenuCliente' value='clients' onclick="SelectMenu(this)" >Clientes</button>
+        <button id='buttonMenuUsuario' value='user' onclick="SelectMenu(this)" >Usuário</button>
+      </div>
+    </aside>
+  </div>
+
+
+  <main class=" animate-appear width-sidebar" id='container-admSite'>
+    
+    <form id='admSite' method='post' action='/admin/<%= token %>/site/<%= selectedAdmin.username %>'>
+      <label for='email'>Email de contato:
+        <input type="text" id='email' name='email' onkeypress="validacaoEmail(this)" value='<%= selectedAdmin.email%>'/>
+      </label>
+
+      <label for='zap de contato'>Whatsapp de contato:
+        <input type="text" id='zap de contato' name='zap' onkeypress="return event.charCode >= 48 && event.charCode <= 57" value='<%= selectedAdmin.number%>'/>
+      </label>
+      <span>exemplo:5521912345678</span>
+
+      <input type='submit' value='Atualizar' />
+    </form>
+  </main>
+
+
+
+    <main class="disabled animate-appear width-sidebar" id='container-admCliente'>
+      
+      <form id='admCliente'>
+        <div class="group-consulta">
+
+          <label for='id'>Campo:
+            <select >
+              <option value='id'>id</option>
+              <option value='cpf'>cpf</option>
+              <option value='celular'>celular</option>
+              <option value='email'>email</option>
+              <option value='carreira'>carreira</option>
+              <option value='valor'>valor</option>
+              <option value='status'>status</option>
+              <option value='serviço'>serviço</option>
+            </select>
+            <input type='text' value=''/>
+          </label>
+          
+        </div>
+        <label for='id'>ID:
+          <input type="text" id='id' name='id'/>
+        </label>
+
+        <div class="group">
+          <label for='cpf'>CPF:
+            <input type="text" id='cpf' name='cpf'  class='minus'/>
+          </label>
+          <label for='celular'>Celular:
+            <input type="text" id='celular' name='celular'  class='minus'/>
+          </label>
+
+        </div>
+
+        <label for='email'>Email:
+          <input type="text" id='email' name='email' onkeypress="validacaoEmail(this)"/>
+        </label>
+
+
+          <div class="group">
+
+          <label for='carreira'>Careira:
+            <input type="text" id='carreira' name='carreira' class='minus'/>
+          </label>
+            <label for='valor'>Valor:
+              <input type="text" id='valor' name='valor' class='minus'/>
+            </label>
+          </div>
+
+          <div class="group">
+            <label for='status'>Status:
+              <input type="text" id='status' name='status' class='minus'/>
+            </label>
+
+            <label for='servico'>Serviço:
+              <input type="text" id='servico' name='servico' class='minus'/>
+            </label>
+          </div>
+
+          <div class="group-buttons">
+            <input type='submit' value='Pesquisar'/>
+            <input type='submit' value='Atualizar' />
+            <input type='submit' value='Deletar' style='background-color: tomato;'/>
+          </div>
+
+      </form>
+    </main>
+
+
+
+    <main class=" animate-appear width-sidebar" id='container-admUser'>
+    
+      <form id='admUser' method='post' action='/admin/<%= token %>/user/<%= selectedAdmin.username %>'>
+        <label for='username'>Username:
+          <input type="text" id='username' name='username' value='<%= selectedAdmin.username%>' />
+        </label>
+  
+        <label for='password'>Password:
+          <input type="password" id='password' name='password' value='<%= selectedAdmin.password%>'/>
+        </label>
+        <span>Ao salvar você será deslogado</span>
+  
+        <input type='submit' value='Atualizar' />
+      </form>
+    </main>
+
+<script type="text/javascript" src="/scripts/mascaras.js"></script>
+<script type="text/javascript" src="/scripts/admin.js"></script>
+</body>
+</html>
