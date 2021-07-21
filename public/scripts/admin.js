@@ -56,3 +56,8 @@ function selectDisable(select){
     document.getElementById("value").disabled = false 
   }
 }
+
+function copy(campo){
+  const value = document.getElementById(`${campo}`).value
+  navigator.clipboard.writeText(value);
+}

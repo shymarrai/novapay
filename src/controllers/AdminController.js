@@ -1,5 +1,6 @@
 const Admin = require('../model/Admin')
 const Client = require('../model/Clients')
+
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcryptjs')
 
@@ -24,8 +25,6 @@ function convertData(data){
 
 module.exports = {
   logar: function (req, res) {
-    const teste = req.body.teste
-    console.log(teste)
     return res.render('login')
   },
   login: async function (req, res) {
@@ -141,10 +140,8 @@ module.exports = {
     if(campo == 'todos'){
       try{
 
-
         const result = await Client.find({}).sort({"_id" : -1})
         let resultConvert = convertData(result)
-        console.log('aq')
         res.render('admin', { token, selectedAdmin, resultConvert})
       }catch(e){
         console.log(e)
@@ -193,7 +190,7 @@ module.exports = {
     const selectedAdmin = await Admin.findOne({ username })
 
     if(action === 'Deletar'){
-      res.redirect(`/admin/${token}/excluir/${username}/${value}`)
+      return res.redirect(`/admin/${token}/excluir/${username}/${value}`)
     }
 
     try{
@@ -215,26 +212,12 @@ module.exports = {
       return res.redirect(`/admin/${token}/${selectedAdmin.username}`)
     }
 
-    
-
   },
   deleteClient: async function (req, res){
     const value = req.params.value
     const token = req.params.token
     const username = req.params.username
     
-    const style = `  
-    background-color: var(--azul);
-    border: none;
-    height: 6vh;
-    width: 30%;
-    margin: 0 auto;
-    color: var(--branco);
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    `
     const userVerified = jwt.verify(token, process.env.TOKEN_SECRET)
     if(!userVerified) return res.redirect('/login')
 
@@ -242,6 +225,8 @@ module.exports = {
     try{
       await Client.findByIdAndDelete(value)
       const result = await Client.find({}).sort({"_id" : -1})
+      if(!result) return res.redirect(`/admin/${token}/${selectedAdmin.username}`)
+
       let resultConvert = convertData(result)
       res.render('admin', { token, selectedAdmin, resultConvert})
 

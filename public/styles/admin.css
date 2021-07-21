@@ -58,7 +58,12 @@ form#admCliente {
   width: 60%;
   height: 20%;
 }
-
+form#admSite {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: -15%;
+}
 aside.sidebar {
   position: fixed;
   height: 100%;
@@ -143,6 +148,13 @@ select {
   font-family: var(--cabin);
   color: var(--azul);
 }
+.routes {
+  position: absolute;
+  bottom: 12%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
 .group {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -152,7 +164,8 @@ select {
   height: 100%;
 }
 input:disabled {
-  background-color: #bbb;
+  background-color: #ddd;
+  border: 2px solid #333;
 }
 .group-consulta {
   margin-top: 4rem;
@@ -165,6 +178,29 @@ input:disabled {
   align-items: center;
   justify-content: center;
   flex-direction: row;
+}
+.group-button {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+.group-button button {
+  position: absolute;
+  right: 3.2%;
+  height: 2rem;
+  border: none;
+  border-radius: 10px;
+  background-color: var(--verde);
+  color: var(--branco);
+  font-size: 1rem;
+  font-family: var(--cabin);
+  cursor: pointer;
+}
+.group-button button:hover {
+  filter: brightness(0.9);
+}
+.group-button button:active {
+  background-color: var(--azul);
 }
 
 input.minus {
@@ -200,7 +236,7 @@ h1 {
   border-spacing: 0 0.2rem;
   width: 100%;
   text-align: center;
-  color: #666;
+  color: #999;
 }
 
 table tbody tr:hover {
@@ -231,7 +267,8 @@ table#data-table tr {
   margin: 0;
   width: 100%;
   height: 100%;
-
+  align-items: flex-end;
+  text-align: center;
   background-color: none;
 }
 

@@ -1,8 +1,6 @@
 const express = require('express')
 const ClientController = require('../controllers/ClientController')
 const AdminController = require('../controllers/AdminController')
-const jwt = require('jsonwebtoken')
-const Admin = require('../model/Admin')
 require('dotenv').config()
 const server = express()
 
@@ -40,6 +38,9 @@ server.get('/contato', (req, res) => {
 server.get('/politica', (req, res) => {
   res.render('politica')
 })
+server.get('/logout', (req, res) => {
+    return res.redirect('/login')
+})
 
 server.get('/login', AdminController.logar)
 server.post('/login', AdminController.login)
@@ -55,6 +56,8 @@ server.post('/admin/:token/search/:username', AdminController.searchClient)
 
 server.get('/admin/:token/excluir/:username/:value', AdminController.deleteClient)
 server.post('/admin/:token/alterar/:username/:value', AdminController.alterClient)
+
+
 server.get('/admin/:token/get/:username/:value', AdminController.getClient)
 server.get('/admin/:token/:username/all', AdminController.allClient)
 
