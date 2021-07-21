@@ -24,6 +24,8 @@ function convertData(data){
 
 module.exports = {
   logar: function (req, res) {
+    const teste = req.body.teste
+    console.log(teste)
     return res.render('login')
   },
   login: async function (req, res) {
@@ -142,6 +144,7 @@ module.exports = {
 
         const result = await Client.find({}).sort({"_id" : -1})
         let resultConvert = convertData(result)
+        console.log('aq')
         res.render('admin', { token, selectedAdmin, resultConvert})
       }catch(e){
         console.log(e)
@@ -166,6 +169,122 @@ module.exports = {
         console.log(e)
         return res.redirect(`/admin/${token}/${selectedAdmin.username}`)
       }
+    }
+  },
+  alterClient: async function (req, res) {
+    const value = req.params.value
+    const token = req.params.token
+    const username = req.params.username
+
+    const cpf = req.body.cpf
+    const celular = req.body.celular
+    const email = req.body.email
+    const carreira = req.body.carreira
+    const valor_beneficio = req.body.valor_beneficio
+    const status = req.body.status
+    const servico = req.body.servico
+
+    // BOTAO DELATAR OU ALTERAR
+    const action = req.body.action
+    
+    const userVerified = jwt.verify(token, process.env.TOKEN_SECRET)
+    if(!userVerified) return res.redirect('/login')
+
+    const selectedAdmin = await Admin.findOne({ username })
+
+    if(action === 'Deletar'){
+      res.redirect(`/admin/${token}/excluir/${username}/${value}`)
+    }
+
+    try{
+      const client = {
+        cpf: jwt.sign(cpf, process.env.SECRET),
+        celular: jwt.sign(celular, process.env.SECRET),
+        email: jwt.sign(email, process.env.SECRET),
+        carreira: jwt.sign(carreira, process.env.SECRET),
+        valor_beneficio: jwt.sign(valor_beneficio, process.env.SECRET),
+        status: status,
+        servico: servico,
+      }
+      let doc = await Client.updateOne({"_id": value},client);
+      const result = await Client.find({}).sort({"_id" : -1})
+      let resultConvert = convertData(result)
+      res.render('admin', { token, selectedAdmin, resultConvert})
+    }catch(e){
+      console.log(e)
+      return res.redirect(`/admin/${token}/${selectedAdmin.username}`)
+    }
+
+    
+
+  },
+  deleteClient: async function (req, res){
+    const value = req.params.value
+    const token = req.params.token
+    const username = req.params.username
+    
+    const style = `  
+    background-color: var(--azul);
+    border: none;
+    height: 6vh;
+    width: 30%;
+    margin: 0 auto;
+    color: var(--branco);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    `
+    const userVerified = jwt.verify(token, process.env.TOKEN_SECRET)
+    if(!userVerified) return res.redirect('/login')
+
+    const selectedAdmin = await Admin.findOne({ username })
+    try{
+      await Client.findByIdAndDelete(value)
+      const result = await Client.find({}).sort({"_id" : -1})
+      let resultConvert = convertData(result)
+      res.render('admin', { token, selectedAdmin, resultConvert})
+
+    }catch(e){
+      console.log(e)
+      return res.redirect(`/admin/${token}/${selectedAdmin.username}`)
+    }
+  },
+  getClient: async function (req, res){
+    const value = req.params.value
+    const token = req.params.token
+    const username = req.params.username
+    
+    const userVerified = jwt.verify(token, process.env.TOKEN_SECRET)
+    if(!userVerified) return res.redirect('/login')
+
+    const selectedAdmin = await Admin.findOne({ username })
+    try{
+      const result = await Client.find({"_id": value}).sort({"_id" : -1})
+      let resultConvert = convertData(result)
+      res.json(resultConvert)
+    }catch(e){
+      console.log(e)
+      return res.redirect(`/admin/${token}/${selectedAdmin.username}`)
+    }
+  },
+  allClient: async function (req, res) {
+    const value = req.params.value
+    const token = req.params.token
+    const username = req.params.username
+    
+    const userVerified = jwt.verify(token, process.env.TOKEN_SECRET)
+    if(!userVerified) return res.redirect('/login')
+
+    const selectedAdmin = await Admin.findOne({ username })
+    try{
+      const result = await Client.find({}).sort({"_id" : -1})
+      let resultConvert = convertData(result)
+      res.json(resultConvert)
+
+    }catch(e){
+      console.log(e)
+      return res.redirect(`/admin/${token}/${selectedAdmin.username}`)
     }
   }
 }

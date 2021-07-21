@@ -93,20 +93,22 @@
     
                 <% for(var i=0; i<resultConvert.length; i++) { %>
                   <tr>
-                    <td id='created_at'>
-                      <%= String(resultConvert[i]?.created_at).slice(4, 25 ) %>
-                    </td>
-  
-                    <td id='cpf'><%= resultConvert[i]?.cpf %></td>
-                    <td id='celular'><%= resultConvert[i]?.celular %></td>
-                    <td id='email'><%= resultConvert[i]?.email %></td>
-                    <td id='carreira'><%= resultConvert[i]?.carreira %></td>
-                    <td id='valor_beneficio' > <%= resultConvert[i]?.valor_beneficio %></td>
-                    <td id='status' > <%= resultConvert[i]?.status %></td>
-                    <td id='servico' > <%= resultConvert[i]?.servico %></td>
-                    <td id='id' > <%= resultConvert[i]?.id %></td>
-                    <td id='action' > <a href="#">Alterar</a> <a href="#">Deletar</a></td>
-                </tr>
+                    <form method="post" action="/admin/<%= token%>/alterar/<%= selectedAdmin.username%>/<%= resultConvert[i].id %>">
+                      <td id='created_at'>
+                        <%= String(resultConvert[i]?.created_at).slice(4, 25 ) %>
+                      </td>
+    
+                      <td><input name='cpf' class='alter-table' type='text' value='<%= resultConvert[i]?.cpf %>'></td>
+                      <td><input name='celular' class='alter-table' type='text' value='<%= resultConvert[i]?.celular %>'></td>
+                      <td><input name='email' class='alter-table' type='text' value='<%= resultConvert[i]?.email %>'></td>
+                      <td><input name='carreira' class='alter-table' type='text' value='<%= resultConvert[i]?.carreira %>'></td>
+                      <td > <input name='valor_beneficio' class='alter-table' type='text' value='<%= resultConvert[i]?.valor_beneficio %>'></td>
+                      <td ><input name='status' class='alter-table' type='text' value='<%= resultConvert[i]?.status %>'></td>
+                      <td > <input name='servico' class='alter-table' type='text' value='<%= resultConvert[i]?.servico %>'></td>
+                      <td > <%= resultConvert[i]?.id %></td>
+                      <td class='alter-button'> <input type='submit' value='Alterar' name='action'><input type='submit' value='Deletar' name='action'></td>
+                    </form>
+                  </tr>
                 <%}%>
               </tbody>
             </table>

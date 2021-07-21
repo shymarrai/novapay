@@ -1,6 +1,8 @@
 const express = require('express')
 const ClientController = require('../controllers/ClientController')
 const AdminController = require('../controllers/AdminController')
+const jwt = require('jsonwebtoken')
+const Admin = require('../model/Admin')
 require('dotenv').config()
 const server = express()
 
@@ -47,13 +49,15 @@ server.get('/save', AdminController.save)
 
 server.get('/admin/:token/:username', AdminController.admin)
 
-
 server.post('/admin/:token/site/:username', AdminController.updateSite)
 server.post('/admin/:token/user/:username', AdminController.updateUser)
 server.post('/admin/:token/search/:username', AdminController.searchClient)
 
-server.get('/admin/:token/excluir/:username/:id', AdminController.deleteClient)
-server.get('/admin/:token/alterar/:username/:id', AdminController.alterClient)
+server.get('/admin/:token/excluir/:username/:value', AdminController.deleteClient)
+server.post('/admin/:token/alterar/:username/:value', AdminController.alterClient)
+server.get('/admin/:token/get/:username/:value', AdminController.getClient)
+server.get('/admin/:token/:username/all', AdminController.allClient)
+
 
 
 module.exports = server
