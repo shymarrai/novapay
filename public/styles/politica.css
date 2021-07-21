@@ -87,6 +87,7 @@ div textarea {
 }
 #formulario-de-contato textarea {
   height: 20vh;
+  width: 100%;
   resize: none;
 }
 #formulario-de-contato input[type="submit"] {

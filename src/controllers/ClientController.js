@@ -1,7 +1,13 @@
 const Client = require('../model/Clients')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
+const Admin = require('../model/Admin')
 require("dotenv").config()
+
+const selectedAdmin = async () => { 
+  return await Admin.findOne({}).sort({"_id" : -1})
+}
+
 
 module.exports = {
   saveSimulado: async function (req,res){    
@@ -25,7 +31,10 @@ module.exports = {
       const title = "Parabéns!"
       const urlDirection = "/"
       const urlText = "Voltar"
-      res.render("message",{title,message,urlDirection,urlText})
+
+      let admin = await selectedAdmin()
+
+      res.render("message",{title,message,urlDirection,urlText, zap: admin.number})
 
     } catch (error) {
       console.log(error)
@@ -52,7 +61,10 @@ module.exports = {
       const title = "Parabéns!"
       const urlDirection = "/"
       const urlText = "Voltar"
-      res.render("message",{title,message,urlDirection,urlText})
+
+      let admin = await selectedAdmin()
+
+      res.render("message",{title,message,urlDirection,urlText, zap: admin.number})
 
     } catch (error) {
       console.log(error)
@@ -85,7 +97,9 @@ module.exports = {
       const urlDirection = "/"
       const urlText = "Voltar"
 
-      res.render("resultado",{title,message,urlDirection,urlText})
+      let admin = await selectedAdmin()
+
+      res.render("resultado",{title,message,urlDirection,urlText, zap: admin.number})
     } catch (error) {
       console.log(error)
       return res.redirect('/simulado')

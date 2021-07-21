@@ -7,7 +7,7 @@
 </head>
 
 <body>
-  <%- include("../views/parts/header.ejs") %>
+  <%- include("../views/parts/header.ejs", zap ) %>
   <main class='politica'>
     <div class='container-politica'>
       <h1>Atendimento LGPD</h1>
@@ -45,35 +45,35 @@
       </ul>
 
       
-      <form id='formulario-de-contato'>
+      <form id='formulario-de-contato' method='post' action='/send'>
 
         <h1>Formulário de contato</h1>
 
         <div class="field">
-          <label for='nome'>Nome:
-            <input type='text' id='nome' />
+          <label for='nameClient'>Nome:
+            <input type='text' id='nameClient' name='nameClient' />
           </label>
           <p>Informe seu nome completo para podermos saber quem é você.</p>
         </div>
 
         <div class="field-double">
-          <label for='email'>Email:
-            <input type='email' id='email' />
+          <label for='emailClient'>Email:
+            <input type='emailClient' id='emailClient' name='emailClient' />
           </label>
 
           <label for='telefone'>Telefone:
-            <input type='tel' id='telefone' />
+            <input type='telefoneClient' id='telefoneClient' name='telefoneClient'/>
           </label>
         </div>
 
         <div class="field">
-          <label for='mensagem'>Mensagem:
-            <textarea id='mensagem'></textarea>
+          <label for='message'>Mensagem:
+            <textarea id='message' name='message'></textarea>
           </label>
           <p>Seja o mais descritivo possível.</p>
         </div>
 
-
+        <p>Você deverá receber um email, aguarde nossa resposta.😃</p>
         <input type='submit' id='enviar' value='Enviar Mensagem'/>
       </form>
     </div>

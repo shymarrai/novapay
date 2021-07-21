@@ -1,6 +1,8 @@
 const Admin = require('../model/Admin')
 const Client = require('../model/Clients')
-
+const mail = require('./mail')
+const nodemailer = require('nodemailer')
+var smtpTransport = require('nodemailer-smtp-transport');
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcryptjs')
 
@@ -14,6 +16,9 @@ function convertData(data){
       email : jwt.verify(client.email, process.env.SECRET),
       carreira : jwt.verify(client.carreira, process.env.SECRET),
       valor_beneficio : jwt.verify(client.valor_beneficio, process.env.SECRET),
+      emailHost: client.emailHost,
+      emailPort: client.emailPort,
+      emailPass: jwt.verify(client.emailPass, process.env.SECRET),
       status: client.status,
       servico: client.servico,
       created_at: client.created_at
@@ -47,11 +52,13 @@ module.exports = {
 
     const admin = new Admin({
       name: 'Desenvolvedor',
-      username: 'shymarrai',
+      username: 'adm',
       password: bcrypt.hashSync('senha123'),
-      email: 'icestonebruno@gmail.com',
-      number: '5521976738943',
-      token_api: 'teste',
+      email: 'novapay@gmail.com',
+      number: '5519999117248',
+      emailHost: 'smtp.gmail.com',
+      emailPort: '465',
+      emailPass: jwt.sign('senha123', process.env.SECRET),
     })
     try {
 
@@ -82,6 +89,9 @@ module.exports = {
     const token = req.params.token
     const username = req.params.username
     const email = req.body.email
+    const host = req.body.emailHost
+    const port = req.body.emailPort
+    const emailPass = req.body.emailPass
     const zap = req.body.zap
 
     try {
@@ -92,6 +102,9 @@ module.exports = {
 
       const admin = {
         email: email,
+        emailHost: host,
+        emailPort: port,
+        emailPass: jwt.sign(emailPass, process.env.SECRET),
         number: zap,
       }
       let doc = await Admin.updateOne({_id: selectedAdmin.id},admin);
@@ -271,5 +284,47 @@ module.exports = {
       console.log(e)
       return res.redirect(`/admin/${token}/${selectedAdmin.username}`)
     }
+  },
+  sendMail: async function (req, res) {
+  const emailClient = req.body.emailClient
+  const nameClient = req.body.nameClient
+  const telefoneClient = req.body.telefoneClient
+  const messageClient = req.body.message
+
+
+    if(emailClient == '' || nameClient == '' || telefoneClient == '' || messageClient == '') return res.redirect(`/`)
+
+  const selectedAdmin = async () => { 
+    return await Admin.findOne({}).sort({"_id" : -1})
   }
+
+  const admin = await selectedAdmin()
+
+  const user = admin.email
+  const pass = jwt.verify(admin.emailPass, process.env.SECRET)
+
+  const transporter = nodemailer.createTransport({
+    host: admin.emailHost,
+    port: admin.emailPort,
+    auth: {
+      user: user,
+      pass: pass
+    }
+  });
+
+  transporter.sendMail({
+    from: user,
+    to: user,
+    replyTo: emailClient,
+    subject: `Contato com: NOVAPAY: `,
+    html: mail.body(messageClient,nameClient, telefoneClient, emailClient)
+
+    }).then(info => {
+      console.log(`Enviado: payload-> \n ${info}`)
+      res.redirect('/contato')
+    }).catch(err => {
+      res.send(`erro: ${err}, <br/>user: ${user}, <br/>client: ${emailClient}, <br/>pass ${pass}, <br/>host ${admin.emailHost}, <br/> porta: ${admin.emailPort}`)
+    })
+  }
+
 }

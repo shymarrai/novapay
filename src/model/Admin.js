@@ -6,7 +6,9 @@ const adminSchema = new mongoose.Schema({
   password: {type: String, required: true},
   email: {type: String, required: true},
   number: {type: String, required: true},
-  token_api: {type: String, required: true},
+  emailHost: {type: String, required: true},
+  emailPort: {type: String, required: true},
+  emailPass: {type: String, required: true},
   created_at: {type: Date, default: Date.now}
 })
 

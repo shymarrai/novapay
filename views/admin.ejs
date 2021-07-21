@@ -30,14 +30,26 @@
   <main class="disabled animate-appear width-sidebar" id='container-admSite'>
     
     <form id='admSite' method='post' action='/admin/<%= token %>/site/<%= selectedAdmin.username %>'>
-      <label for='email'>Email de contato:
-        <input type="text" id='email' name='email' onkeypress="validacaoEmail(this)" value='<%= selectedAdmin.email%>'/>
-      </label>
-
       <label for='zap de contato'>Whatsapp de contato:
         <input type="text" id='zap de contato' name='zap' onkeypress="return event.charCode >= 48 && event.charCode <= 57" value='<%= selectedAdmin.number%>'/>
       </label>
       <span>exemplo:5521912345678</span>
+
+      <div class='group'>
+        <label for='email'>Email de contato:
+          <input type="text" id='email' name='email' onkeypress="validacaoEmail(this)" value='<%= selectedAdmin.email%>'/>
+        </label>
+        <label for='emailPass'>Senha do Email:
+          <input type="password" id='emailPass' name='emailPass'  value='<%= selectedAdmin.emailPass%>'/>
+        </label>
+        <label for='emailHost'>Host do Email:
+          <input type="text" id='emailHost' name='emailHost'  value='<%= selectedAdmin.emailHost%>'/>
+        </label>
+        <label for='emailPort'>Porta do email:
+          <input type="text" id='emailPort' name='emailPort' value='<%= selectedAdmin.emailPort%>'/>
+        </label>
+      </div>
+
 
       <input type='submit' value='Atualizar' />
     </form>
