@@ -1,3 +1,4 @@
+
 function SelectMenu(buttonSelect){
   const buttonSite = document.getElementById('buttonMenuSite')
   const buttonClient = document.getElementById('buttonMenuCliente')
@@ -45,5 +46,13 @@ function SelectMenu(buttonSelect){
     container_site.classList.add('disabled')
     container_client.classList.add('disabled')
     title.innerText = 'Admin de Usuário'
+  }
+}
+
+function selectDisable(select){
+  if(select.value == "todos"){ 
+    document.getElementById("value").disabled = true 
+  }else{
+    document.getElementById("value").disabled = false 
   }
 }

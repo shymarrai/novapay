@@ -50,6 +50,10 @@ server.get('/admin/:token/:username', AdminController.admin)
 
 server.post('/admin/:token/site/:username', AdminController.updateSite)
 server.post('/admin/:token/user/:username', AdminController.updateUser)
+server.post('/admin/:token/search/:username', AdminController.searchClient)
+
+server.get('/admin/:token/excluir/:username/:id', AdminController.deleteClient)
+server.get('/admin/:token/alterar/:username/:id', AdminController.alterClient)
 
 
 module.exports = server

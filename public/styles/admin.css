@@ -48,6 +48,16 @@ form {
   width: 30%;
   height: 30%;
 }
+form#admCliente {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: -30%;
+
+  width: 60%;
+  height: 20%;
+}
 
 aside.sidebar {
   position: fixed;
@@ -98,7 +108,7 @@ input[type="submit"] {
   background-color: var(--azul);
   border: none;
   height: 6vh;
-  width: 50%;
+  width: 30%;
   margin: 0 auto;
   color: var(--branco);
   cursor: pointer;
@@ -141,6 +151,9 @@ select {
   width: 36%;
   height: 100%;
 }
+input:disabled {
+  background-color: #bbb;
+}
 .group-consulta {
   margin-top: 4rem;
   width: 100%;
@@ -152,14 +165,6 @@ select {
   align-items: center;
   justify-content: center;
   flex-direction: row;
-}
-
-.group-buttons input {
-  width: 70%;
-}
-.group-buttons {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
 }
 
 input.minus {
@@ -174,4 +179,44 @@ h1 {
   font-family: var(--raj);
   color: #fff;
   top: 10px;
+}
+
+#transaction {
+  overflow-x: auto;
+  overflow-y: auto;
+  width: 82vw;
+  height: 20rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  margin: 0 auto;
+  display: flex;
+  align-self: center;
+  bottom: 10px;
+  position: absolute;
+  background-color: var(--branco);
+  font-family: var(--cabin);
+}
+#data-table {
+  border-spacing: 0 0.2rem;
+  width: 100%;
+  text-align: center;
+  color: #666;
+}
+
+table tbody tr:hover {
+  opacity: 1;
+}
+
+table#data-table th {
+  background: rgb(33, 95, 228);
+  font-weight: normal;
+  padding: 0.5rem 5rem;
+  color: #fff;
+  text-align: left;
+}
+
+table#data-table td {
+  font-weight: normal;
+  padding: 0rem 1.5rem;
+  overflow: auto;
 }

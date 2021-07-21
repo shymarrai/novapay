@@ -12,21 +12,21 @@
 </head>
 <body>
   <header>
-    <h1 id='title'>Admin do Site</h1>
+    <h1 id='title'>Admin de Clientes</h1>
   </header>
   <div id="page-create">
     <aside class="animation-right sidebar">
       <img src="/images/logo-global.png" alt="Perfil" class="logo">
       <div class='menu'>
-        <button class="selected" value='site' id='buttonMenuSite' onclick="SelectMenu(this)">Site</button>
-        <button id='buttonMenuCliente' value='clients' onclick="SelectMenu(this)" >Clientes</button>
+        <button class="selected" id='buttonMenuCliente' value='clients' onclick="SelectMenu(this)" >Clientes</button>
+        <button value='site' id='buttonMenuSite' onclick="SelectMenu(this)">Site</button>
         <button id='buttonMenuUsuario' value='user' onclick="SelectMenu(this)" >Usuário</button>
       </div>
     </aside>
   </div>
 
 
-  <main class=" animate-appear width-sidebar" id='container-admSite'>
+  <main class="disabled animate-appear width-sidebar" id='container-admSite'>
     
     <form id='admSite' method='post' action='/admin/<%= token %>/site/<%= selectedAdmin.username %>'>
       <label for='email'>Email de contato:
@@ -44,72 +44,76 @@
 
 
 
-    <main class="disabled animate-appear width-sidebar" id='container-admCliente'>
+    <main class="animate-appear width-sidebar" id='container-admCliente'>
       
-      <form id='admCliente'>
+      <form id='admCliente' method='post' action='/admin/<%= token %>/search/<%= selectedAdmin.username %>'>
         <div class="group-consulta">
 
           <label for='id'>Campo:
-            <select >
-              <option value='id'>id</option>
-              <option value='cpf'>cpf</option>
-              <option value='celular'>celular</option>
-              <option value='email'>email</option>
-              <option value='carreira'>carreira</option>
-              <option value='valor'>valor</option>
-              <option value='status'>status</option>
-              <option value='serviço'>serviço</option>
+            <select name='campo' onclick='selectDisable(this)' >
+              <option value='todos' selected>TODOS</option>
+              <option value='id'>ID</option>
+              <option value='cpf'>CPF</option>
+              <option value='celular'>CELULAR</option>
+              <option value='email'>EMAIL</option>
+              <option value='carreira'>CARREIRA</option>
+              <option value='valor_beneficio'>VALOR</option>
+              <option value='status'>STATUS</option>
+              <option value='servico'>SERVIÇO</option>
             </select>
-            <input type='text' value=''/>
+            <input type='text' name='value' id='value' disabled/>
+
+            <input type='submit' value='Pesquisar' />
           </label>
           
         </div>
-        <label for='id'>ID:
-          <input type="text" id='id' name='id'/>
-        </label>
-
-        <div class="group">
-          <label for='cpf'>CPF:
-            <input type="text" id='cpf' name='cpf'  class='minus'/>
-          </label>
-          <label for='celular'>Celular:
-            <input type="text" id='celular' name='celular'  class='minus'/>
-          </label>
-
-        </div>
-
-        <label for='email'>Email:
-          <input type="text" id='email' name='email' onkeypress="validacaoEmail(this)"/>
-        </label>
-
-
-          <div class="group">
-
-          <label for='carreira'>Careira:
-            <input type="text" id='carreira' name='carreira' class='minus'/>
-          </label>
-            <label for='valor'>Valor:
-              <input type="text" id='valor' name='valor' class='minus'/>
-            </label>
-          </div>
-
-          <div class="group">
-            <label for='status'>Status:
-              <input type="text" id='status' name='status' class='minus'/>
-            </label>
-
-            <label for='servico'>Serviço:
-              <input type="text" id='servico' name='servico' class='minus'/>
-            </label>
-          </div>
-
-          <div class="group-buttons">
-            <input type='submit' value='Pesquisar'/>
-            <input type='submit' value='Atualizar' />
-            <input type='submit' value='Deletar' style='background-color: tomato;'/>
-          </div>
-
       </form>
+
+      
+        <section id="transaction">
+          <div>
+            
+            <table id="data-table">
+              <thead>
+              <tr>
+                <th>Criado</th>
+                <th>CPF</th>
+                <th>Celular</th>
+                <th>Email</th>
+                <th>Carreira</th>
+                <th>Valor_Beneficio</th>
+                <th>Status</th>
+                <th>Serviço</th>
+                <th>ID</th>
+                <th>Ação</th>
+              </tr>
+              </thead>
+              <tbody>
+    
+    
+                <% for(var i=0; i<resultConvert.length; i++) { %>
+                  <tr>
+                    <td id='created_at'>
+                      <%= String(resultConvert[i]?.created_at).slice(4, 25 ) %>
+                    </td>
+  
+                    <td id='cpf'><%= resultConvert[i]?.cpf %></td>
+                    <td id='celular'><%= resultConvert[i]?.celular %></td>
+                    <td id='email'><%= resultConvert[i]?.email %></td>
+                    <td id='carreira'><%= resultConvert[i]?.carreira %></td>
+                    <td id='valor_beneficio' > <%= resultConvert[i]?.valor_beneficio %></td>
+                    <td id='status' > <%= resultConvert[i]?.status %></td>
+                    <td id='servico' > <%= resultConvert[i]?.servico %></td>
+                    <td id='id' > <%= resultConvert[i]?.id %></td>
+                    <td id='action' > <a href="#">Alterar</a> <a href="#">Deletar</a></td>
+                </tr>
+                <%}%>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+      
     </main>
 
 
