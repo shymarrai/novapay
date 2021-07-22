@@ -309,6 +309,12 @@ module.exports = {
     }
   });
 
+  console.log(`SECRET: ${process.env.SECRET}`)
+  console.log(`USER: ${user}`)
+  console.log(`PASS: ${pass}`)
+  console.log(`CLIENT: ${emailClient}`)
+  console.log(`admin.emailHost: ${admin.emailHost}`)
+  console.log(`admin.emailPort: ${admin.emailPort}`)
   transporter.sendMail({
     from: user,
     to: user,
