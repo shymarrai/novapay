@@ -16,9 +16,6 @@ function convertData(data){
       email : jwt.verify(client.email, process.env.SECRET),
       carreira : jwt.verify(client.carreira, process.env.SECRET),
       valor_beneficio : jwt.verify(client.valor_beneficio, process.env.SECRET),
-      emailHost: client.emailHost,
-      emailPort: client.emailPort,
-      emailPass: jwt.verify(client.emailPass, process.env.SECRET),
       status: client.status,
       servico: client.servico,
       created_at: client.created_at

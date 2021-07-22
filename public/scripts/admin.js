@@ -49,6 +49,19 @@ function SelectMenu(buttonSelect){
   }
 }
 
+function sizeOfThings(){
+  var windowWidth = window.innerWidth;
+  
+  var screenWidth = screen.width;
+  if(screenWidth<=  900){
+    document.querySelector('.sidebar').classList.add("disabled")
+  }
+
+
+};
+
+sizeOfThings();
+
 function selectDisable(select){
   if(select.value == "todos"){ 
     document.getElementById("value").disabled = true 
@@ -60,4 +73,8 @@ function selectDisable(select){
 function copy(campo){
   const value = document.getElementById(`${campo}`).value
   navigator.clipboard.writeText(value);
+}
+
+function menuToggle(){
+  document.querySelector('.sidebar').classList.toggle("disabled");
 }

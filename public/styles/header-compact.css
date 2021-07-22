@@ -84,6 +84,9 @@ a.item {
   background-color: none;
   text-decoration: none;
 }
+.menu {
+  overflow: hidden;
+}
 
 @media (min-width: 700px) {
   .menu div div:hover {
@@ -117,6 +120,7 @@ a.item {
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    overflow: hidden;
   }
   .menu div div {
     color: var(--branco);
@@ -125,5 +129,6 @@ a.item {
     font-family: var(--cabin);
     width: 100%;
     text-align: center;
+    overflow: hidden;
   }
 }

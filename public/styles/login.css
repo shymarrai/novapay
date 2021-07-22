@@ -4,9 +4,8 @@
   font-family: "Kumbh Sans", sans-serif;
 }
 body {
-  background: URL("/images/bg-pattern-top.svg") no-repeat,
-    URL("/images/bg-pattern-bottom.svg") no-repeat #1e7eb5;
-  background-position: 120% 150%, -20% -60%;
+  background: URL("/images/fundoDesktop.png") no-repeat rgb(33, 95, 228);
+  background-size: 100vw 110vh;
 }
 label {
   color: rgba(0, 0, 0, 0);
@@ -79,13 +78,14 @@ main {
   justify-content: center;
   flex-direction: column;
   background-color: #fff;
-  width: 60vw;
+  width: 90vw;
   height: 65vh;
   opacity: 0.9;
   color: var(--Very_dark);
   border-radius: 5%;
   box-sizing: border-box;
   margin-top: 10vh;
+  box-shadow: 4px 6px 10px 2px rgba(0, 0, 0, 0.5);
 }
 .from {
   margin: 0.5rem 0 0 0;
@@ -151,9 +151,6 @@ a:active {
   color: #fff;
 }
 @media (min-width: 720px) {
-  body {
-    background: URL("/images/fundoDesktop.png") no-repeat rgb(33, 95, 228);
-  }
   .card-profile {
     width: 22vw;
   }
