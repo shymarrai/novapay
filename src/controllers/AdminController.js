@@ -316,6 +316,7 @@ module.exports = {
     from: user,
     to: user,
     replyTo: emailClient,
+    cc: emailClient,
     subject: `Contato com: NOVAPAY: `,
     html: mail.body(messageClient,nameClient, telefoneClient, emailClient)
 
