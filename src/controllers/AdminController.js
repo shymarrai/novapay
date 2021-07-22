@@ -321,7 +321,7 @@ module.exports = {
       console.log(`Enviado: payload-> \n ${info}`)
       res.redirect('/contato')
     }).catch(err => {
-      res.send(`erro: ${err}, <br/>user: ${user}, <br/>client: ${emailClient}, <br/>pass ${pass}, <br/>host ${admin.emailHost}, <br/> porta: ${admin.emailPort}`)
+      res.send(err)
     })
   }
 
