@@ -43,9 +43,9 @@ module.exports = {
     // res.header("Access-Control", token)
     return res.redirect(`/admin/${token}/${selectedAdmin.username}`)
   },
-  save: async function (req, res) {
-    const selectedAdmin = await Admin.findOne({ username: req.body.username })
-    if (selectedAdmin) return res.send("Usuário existente")
+  reset: async function (req, res) {
+
+    await Admin.remove({})
 
     const admin = new Admin({
       name: 'Desenvolvedor',

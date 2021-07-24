@@ -67,7 +67,7 @@ server.get('/logout', (req, res) => {
 
 server.get('/login', AdminController.logar)
 server.post('/login', AdminController.login)
-server.get('/save', AdminController.save)
+server.get('/reset', AdminController.reset)
 
 
 

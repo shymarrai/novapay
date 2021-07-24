@@ -21,7 +21,8 @@ module.exports = {
       email: jwt.sign(req.body.email, process.env.SECRET),
       carreira: jwt.sign(req.body.carreira, process.env.SECRET),
       valor_beneficio: jwt.sign(req.body.valor, process.env.SECRET),
-      servico: "Simular Empréstimo"
+      servico: "Simular Empréstimo",
+      politica: req.body.accepted
     })
     try {
 
@@ -51,7 +52,8 @@ module.exports = {
       email: jwt.sign(req.body.email, process.env.SECRET),
       carreira: jwt.sign(req.body.carreira, process.env.SECRET),
       valor_beneficio: jwt.sign(req.body.valor, process.env.SECRET),
-      servico: "Solicitar Limite"
+      servico: "Solicitar Limite",
+      politica: req.body.accepted
     })
     try {
 
