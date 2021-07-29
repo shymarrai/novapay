@@ -128,7 +128,8 @@ module.exports = {
       const urlDirection = "/"
       const urlText = "Voltar"
 
-      let admin = await selectedAdmin()
+      // let admin = await selectedAdmin()
+      let admin = {number: '21999999999'}
 
       res.render("resultado",{title,message,urlDirection,urlText, zap: admin.number})
     } catch (error) {
