@@ -79,57 +79,29 @@ module.exports = {
     if(req.body.accepted === undefined || req.body.accepted === null || req.body.accepted == '') return res.redirect('/acompanhar_proposta')
 
     try {
-      // const createdClient = await Client.find({ cpf:  jwt.sign(req.body.cpf_consulta, process.env.SECRET) })
-      const message = [
-        {
-        cpf: 'teste',
-        email: 'teste',
-        celular: 'teste',
-        carreira: 'teste',
-        valor_beneficio: 'teste',
-        status: 'teste',
-        servico: 'teste',
-      },
-      {
-        cpf: 'teste',
-        email: 'teste',
-        celular: 'teste',
-        carreira: 'teste',
-        valor_beneficio: 'teste',
-        status: 'teste',
-        servico: 'teste',
-      },
-      {
-        cpf: 'teste',
-        email: 'teste',
-        celular: 'teste',
-        carreira: 'teste',
-        valor_beneficio: 'teste',
-        status: 'teste',
-        servico: 'teste',
-      }
-    ]
-      // message = createdClient.map(function(client, i){
-      //   let email = jwt.verify(client.email, process.env.SECRET)
-      //   let celular = jwt.verify(client.celular, process.env.SECRET)
-      //   let cpf = jwt.verify(client.cpf, process.env.SECRET)
-      //   return {
+      const createdClient = await Client.find({ cpf:  jwt.sign(req.body.cpf_consulta, process.env.SECRET) })
 
-      //     cpf: `${cpf.substr(0, 3)}.***.***-**`,
-      //     email: `${email.substr(0, 1)}*****${email.substr(email.indexOf("@"), email.length)}`,
-      //     celular: `(**) ***** - ${celular.substr(celular.length - 4, celular.length)}`,
-      //     carreira: jwt.verify(client.carreira, process.env.SECRET),
-      //     valor_beneficio: `R$ ${jwt.verify(client.valor_beneficio, process.env.SECRET)}`,
-      //     status: client.status,
-      //     servico: client.servico
-      //   }
-      // })
+      const message = createdClient.map(function(client, i){
+        let email = jwt.verify(client.email, process.env.SECRET)
+        let celular = jwt.verify(client.celular, process.env.SECRET)
+        let cpf = jwt.verify(client.cpf, process.env.SECRET)
+        return {
+
+          cpf: `${cpf.substr(0, 3)}.***.***-**`,
+          email: `${email.substr(0, 1)}*****${email.substr(email.indexOf("@"), email.length)}`,
+          celular: `(**) ***** - ${celular.substr(celular.length - 4, celular.length)}`,
+          carreira: jwt.verify(client.carreira, process.env.SECRET),
+          valor_beneficio: `R$ ${jwt.verify(client.valor_beneficio, process.env.SECRET)}`,
+          status: client.status,
+          servico: client.servico
+        }
+      })
       const title = "Resultado da Consulta!"
       const urlDirection = "/"
       const urlText = "Voltar"
 
-      // let admin = await selectedAdmin()
-      let admin = {number: '21999999999'}
+      let admin = await Admin.findOne({}).sort({"_id" : -1})
+      
 
       res.render("resultado",{title,message,urlDirection,urlText, zap: admin.number})
     } catch (error) {

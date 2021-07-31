@@ -4,7 +4,7 @@ const routes = require('./src/routes')
 require('dotenv').config()
 const server = express();
 
-
+const HOST = '0.0.0.0';
 
 //conexão com o banco de dados
 mongoose.connect(process.env.MONGO_CONNECTION_URL, { useUnifiedTopology: true, useNewUrlParser: true },
