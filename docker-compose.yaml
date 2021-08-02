@@ -1,0 +1,30 @@
+version: "3.8"
+services:
+  database:
+    container_name: mongo-server
+    image: mongo
+    restart: always
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=123qwe
+    volumes:
+      - type: volume
+        source: db-volume
+        target: /data/db
+
+  app:
+    container_name: app
+    build: .
+    depends_on:
+      - database
+    environment:
+      - DATABASE_USER=novapayadminmongo
+      - DATABASE_PASSWORD=novapayadminmongo@123
+      - DATABASE_HOST_NAME=mongo-server
+      - MONGO_CONNECTION_URL=mongodb+srv://novapayadminmongo:novapayadminmongo@123@cluster0.4rdbg.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
+
+    ports:
+      - 8080:8080
+
+volumes:
+  db-volume:
