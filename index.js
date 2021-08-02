@@ -30,4 +30,4 @@ mongoose.connect(process.env.MONGO_CONNECTION_URL, { useUnifiedTopology: true, u
   server.use(routes)
 
   //ouvindo a porta
-  server.listen(process.env.PORT, () => console.log('rodando'))
+  server.listen(process.env.PORT, HOST)
