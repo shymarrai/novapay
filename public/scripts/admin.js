@@ -63,11 +63,72 @@ function sizeOfThings(){
 sizeOfThings();
 
 function selectDisable(select){
-  if(select.value == "todos"){ 
-    document.getElementById("value").disabled = true 
+  let pesquisa = document.getElementById("value")
+  let campo = document.getElementById("campo")
+  let divSelect = document.getElementById("select-search")
+  let divBlank = document.getElementById("select-blank")
+
+  
+  if(select.value == "todos"){
+    pesquisa.disabled = true
+    divBlank.innerHTML = ''
+  }else if(select.value == "servico" || select.value == "carreira" || select.value == "status"){
+    divSelect.classList.remove("disabled")
+    pesquisa.classList.add("disabled")
+
+    if(campo.value == "servico"){
+      divBlank.innerHTML = ''
+      const listStatus = ["Simular Empréstimo", "Solicitar Limite"]
+      
+        listStatus.map(function(name, i) {
+          divBlank.innerHTML += `<option value='${name}'>${name}</option>`
+        })      
+      
+    }
+    if(campo.value == "status"){
+      divBlank.innerHTML = ''
+      const listStatus = ['Em Análise', 'Aprovado', 'Reprovado']
+      
+        listStatus.map(function(name, i) {
+          divBlank.innerHTML += `<option value='${name}'>${name}</option>`
+        })      
+      
+    }
+    if(campo.value == "carreira"){
+      divBlank.innerHTML = ''
+      const listStatus = ['Servidor Federal', 'Servidor Estadual', 'Servidor Municipal', 'Servidor GDF', 'Forças Armadas', 'Pensionistas', 'Aposentado', 'Empresário', 'Autônomo', 'Estagiário', 'Funcionário de Empresa Privada']
+      
+        listStatus.map(function(name, i) {
+          divBlank.innerHTML += `<option value='${name}'>${name}</option>`
+        })      
+      
+    }
+    
   }else{
-    document.getElementById("value").disabled = false 
+    divSelect.classList.add("disabled")
+    pesquisa.classList.remove("disabled")
+    divBlank.innerHTML = ''
+    pesquisa.value = ''
+    pesquisa.disabled = false
+    
+
+    if(campo.value == 'cpf'){ 
+      pesquisa.setAttribute("onkeypress", "mask(this, mCPF)");
+      pesquisa.setAttribute("maxlength", "14");
+    }
+
+    if(campo.value == 'celular'){ 
+      pesquisa.setAttribute("onkeypress", "mask(this, mphoneC)");
+    }
+
+    if(campo.value == 'valor_beneficio'){ 
+      pesquisa.setAttribute("onkeypress", "formatarMoeda(this)");
+    }
+
   }
+
+
+
 }
 
 function copy(campo){

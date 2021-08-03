@@ -164,6 +164,13 @@ select {
   width: 36%;
   height: 100%;
 }
+select[name="servico"],
+select[name="status"],
+select[name="carreira"] {
+  border: none;
+  width: 75%;
+  font-size: 1rem;
+}
 input:disabled {
   background-color: #ddd;
   border: 2px solid #333;

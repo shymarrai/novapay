@@ -7,6 +7,7 @@ const clientSchema = new mongoose.Schema({
   carreira: String,
   valor_beneficio: String,
   status: {type:String, default: "Em Análise"},
+  obs: {type:String, default: "" },
   servico: {type: String, required: true},
   politica: {type: String, required: true},
   created_at: {type: Date, default: Date.now}

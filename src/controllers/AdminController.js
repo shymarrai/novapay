@@ -18,6 +18,7 @@ function convertData(data){
       valor_beneficio : jwt.verify(client.valor_beneficio, process.env.SECRET),
       status: client.status,
       servico: client.servico,
+      obs: client.obs,
       created_at: client.created_at
     }
   })
@@ -190,6 +191,7 @@ module.exports = {
     const valor_beneficio = req.body.valor_beneficio
     const status = req.body.status
     const servico = req.body.servico
+    const obs = req.body.obs
 
     // BOTAO DELATAR OU ALTERAR
     const action = req.body.action
@@ -211,6 +213,7 @@ module.exports = {
         carreira: jwt.sign(carreira, process.env.SECRET),
         valor_beneficio: jwt.sign(valor_beneficio, process.env.SECRET),
         status: status,
+        obs: obs,
         servico: servico,
       }
       let doc = await Client.updateOne({"_id": value},client);

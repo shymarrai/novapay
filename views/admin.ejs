@@ -82,8 +82,8 @@
       <form id='admCliente' method='post' action='/admin/<%= token %>/search/<%= selectedAdmin.username %>'>
         <div class="group-consulta">
 
-          <label for='id'>Campo:
-            <select name='campo' onclick='selectDisable(this)' >
+          <label for='campo'>Campo:
+            <select name='campo' id='campo' onchange='selectDisable(this)' >
               <option value='todos' selected>TODOS</option>
               <option value='id'>ID</option>
               <option value='cpf'>CPF</option>
@@ -95,6 +95,11 @@
               <option value='servico'>SERVIÇO</option>
             </select>
             <input type='text' name='value' id='value' disabled/>
+            <div class='select-search  disabled' id='select-search' style='width: 100%'>
+              <select name='value' id='select-blank' style='margin-left: 0; margin-right: 10% ;width: 90%'>
+                
+              </select>
+            </div>
 
             <input type='submit' value='Pesquisar' />
           </label>
@@ -117,6 +122,7 @@
                 <th>Valor_Beneficio</th>
                 <th>Status</th>
                 <th>Serviço</th>
+                <th>OBS</th>
                 <th>ID</th>
                 <th>Ação</th>
               </tr>
@@ -131,13 +137,50 @@
                         <%= String(resultConvert[i]?.created_at).slice(4, 25 ) %>
                       </td>
     
-                      <td><input name='cpf' class='alter-table' type='text' value='<%= resultConvert[i]?.cpf %>'></td>
-                      <td><input name='celular' class='alter-table' type='text' value='<%= resultConvert[i]?.celular %>'></td>
+                      <td><input name='cpf' class='alter-table' onkeypress="mask(this, mCPF);" onblur="mask(this, mCPF);" type='text' value='<%= resultConvert[i]?.cpf %>'></td>
+                      <td><input name='celular' class='alter-table' type='text' onkeypress="mask(this, mphoneC);" onblur="mask(this, mphoneC);" value='<%= resultConvert[i]?.celular %>'></td>
                       <td><input name='email' class='alter-table' type='text' value='<%= resultConvert[i]?.email %>'></td>
-                      <td><input name='carreira' class='alter-table' type='text' value='<%= resultConvert[i]?.carreira %>'></td>
-                      <td > <input name='valor_beneficio' class='alter-table' type='text' value='<%= resultConvert[i]?.valor_beneficio %>'></td>
-                      <td ><input name='status' class='alter-table' type='text' value='<%= resultConvert[i]?.status %>'></td>
-                      <td > <input name='servico' class='alter-table' type='text' value='<%= resultConvert[i]?.servico %>'></td>
+                      <td>
+                        <select name='carreira'>
+                          <% var listCarreira = ['Servidor Federal', 'Servidor Estadual', 'Servidor Municipal', 'Servidor GDF', 'Forças Armadas', 'Pensionistas', 'Aposentado', 'Empresário', 'Autônomo', 'Estagiário', 'Funcionário de Empresa Privada']%>
+                          <% listCarreira.forEach(e => {%>
+                            <option value='<%= e%>' <%= e == String(resultConvert[i]?.carreira) ? "selected" : ""%> ><%= e%></option>
+                          <% }) %>
+
+                        </select> 
+                      </td>
+                      <td > <input name='valor_beneficio' class='alter-table' type='text' onkeyup='formatarMoeda(this)' value='<%= resultConvert[i]?.valor_beneficio %>'></td>
+                      
+                      <td >
+                        <select name='status'>
+                          <% var listStatus = ['Em Análise', 'Aprovado', 'Reprovado']%>
+                          <% listStatus.forEach(e => {%>
+                            <option value='<%= e%>' <%= e == String(resultConvert[i]?.status) ? "selected" : ""%> ><%= e%></option>
+                          <% }) %>
+                          
+                        </select> 
+                      </td>
+                      
+                      
+                      
+                  <td >
+                    <select name='servico'>
+                      <option value='<%= resultConvert[i]?.servico%>' selected><%= resultConvert[i]?.servico%></option>
+                      <% var listServicos = ['Solicitar Limite', 'Simular Empréstimo']%>
+                      <% const othersServices = listServicos.find(element => element != resultConvert[i]?.servico)%>
+                      
+                      <option value='<%= othersServices%>'> <%= othersServices%></option>
+                      
+                    </select> 
+                    
+                  
+                  </td>
+
+
+
+
+
+                      <td > <input name='obs' class='alter-table' type='text' value='<%= resultConvert[i]?.obs %>'></td>
                       <td > <%= resultConvert[i]?.id %></td>
                       <td class='alter-button'> <input type='submit' value='Alterar' name='action'><input type='submit' value='Deletar' name='action'></td>
                     </form>
